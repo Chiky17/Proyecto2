@@ -139,7 +139,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="controladora.cpp" />
+    <ClCompile Include="empresaDots.cpp" />
+    <ClCompile Include="jugador.cpp" />
+    <ClCompile Include="listaJugador.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="vista.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="controladora.h" />
+    <ClInclude Include="empresaDots.h" />
+    <ClInclude Include="jugador.h" />
+    <ClInclude Include="listaJugador.h" />
+    <ClInclude Include="vista.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

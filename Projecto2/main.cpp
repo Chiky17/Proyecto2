@@ -1,10 +1,7 @@
-
+#include "controladora.h"
 int main()
 {
-	//cristopher playo
+	controladora con;
 
-	//si
-
-
-	// ADIOS
+	con.controlMenuEmpresa();
 }
