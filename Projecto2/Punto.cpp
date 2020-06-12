@@ -1,7 +1,7 @@
 #include"Punto.h"
 
-Punto::Punto(bool a, bool ab, bool i, bool d, bool b, int num) :
-	arriba(a), abajo(ab), izquierda(i), derecha(d), desactivado(b), numPaso(num) {
+Punto::Punto(bool a, bool ab, bool i, bool d, bool b, int num,char nom) :
+	arriba(a), abajo(ab), izquierda(i), derecha(d), desactivado(b), numPaso(num),nombre(nom) {
 
 }
 Punto::~Punto() {
@@ -27,8 +27,12 @@ bool Punto::getDesactivado() {
 int Punto::getNumPaso() {
 	return numPaso;
 }
-
+char Punto::getNombre()
+{
+	return nombre;
+}
 //sets
+
 void Punto::setArriba(bool a) {
 	arriba = a;
 }
@@ -47,7 +51,10 @@ void Punto::setDesactivado(bool b) {
 void Punto::setNumPaso(int n) {
 	numPaso = n;
 }
-
+void Punto::setNombre(char n)
+{
+	nombre = n;
+}
 ostream& operator<<(ostream& out, const Punto& p) {
 	return out << "o";
 }

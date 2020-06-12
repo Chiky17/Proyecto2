@@ -33,16 +33,12 @@ bool vista::iniciarSesion(empresaDots* empresa) // false si el codigo o id son i
 
 	system("cls");
 	imprimeCadena("Digite su cedula: "); id = leerCadena2();
-	if (empresa->estaJugador(id))
-	{
-		imprimeCadena("Digite el codigo del dia de hoy: "); codigo = leerCadena2();
-		if (codigo == empresa->getCodigo())
+	imprimeCadena("Digite el codigo del dia de hoy: "); codigo = leerCadena2();
+	
+	if ((codigo == empresa->getCodigo()) && (empresa->estaJugador(id)))
 			return true;
 		else
 			return false;
-	}
-	else
-		return false;
 }
 int vista::modoDeJuego() // si inicio sesion true
 {

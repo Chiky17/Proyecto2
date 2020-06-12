@@ -31,7 +31,7 @@ Punto* ContenedorM::getPunto(int i, int j) {
 	}
 	return NULL;
 }
-string ContenedorM::toString(string nom) {
+string ContenedorM::toString(char nom) {
 	stringstream s;
 	int k = 0;
 	Punto* p = NULL;
@@ -54,7 +54,8 @@ string ContenedorM::toString(string nom) {
 						s << "  | j";
 					else
 						s << "  |  ";*/
-					s << "  | " << puntoJugador(i, j, nom);
+					puntoJugador(i, j, nom);
+					s << "   |" << m[i][j]->getNombre();
 				}
 				else
 					s << "     ";
@@ -128,12 +129,11 @@ bool ContenedorM::compruebaCuadro(int x1, int y1) // alguien tiene que recibir e
 				return true;*/
 	return false;
 }
-string ContenedorM::puntoJugador(int x1, int y1, string nom)
+void ContenedorM::puntoJugador(int x1, int y1, char nom)
 {
 	if (compruebaCuadro(x1, y1))
-		return nom;
-	else
-		return " ";
+		if (m[x1][y1]->getNombre() == ' ')
+			m[x1][y1]->setNombre(nom);
 }
 bool ContenedorM::estaLlena()
 {
@@ -169,6 +169,15 @@ bool ContenedorM::estaLlena()
 								return false;
 		}
 	return true;
+}
+int ContenedorM::cuentaPuntos(char nom, string toStringAux)
+{
+	int cont = 0;
+
+	for (int i = 0; i < toStringAux.length(); i++)
+		if (toStringAux[i] == nom)
+			cont++;
+	return cont;
 }
 
 int ContenedorM::getCol()

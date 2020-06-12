@@ -19,12 +19,13 @@ public:
 	virtual ~ContenedorM();
 	void ingresaPunto(int i, int j, Punto* p);
 	Punto* getPunto(int i, int j);
-	string toString(string);
+	string toString(char);
 
 	int columnaFinal();
 	bool compruebaCuadro(int, int);
-	string puntoJugador(int, int, string); // recibe ultima jugada, si hace cuadro, retorna el nom de jugador
+	void puntoJugador(int, int, char); // recibe ultima jugada, si hace cuadro, retorna el nom de jugador
 	bool estaLlena();
+	int cuentaPuntos(char, string);
 
 	int getCol();
 	bool compruebaTrazo(Punto*, Punto*);

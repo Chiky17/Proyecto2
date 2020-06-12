@@ -15,9 +15,10 @@ private:
 	bool derecha;
 	bool desactivado;
 	int numPaso;
+	char nombre;
 
 public:
-	Punto(bool = false, bool = false, bool = false, bool = false, bool = false, int = 0);
+	Punto(bool = false, bool = false, bool = false, bool = false, bool = false, int = 0,char=' ');
 	virtual ~Punto();
 
 	//gets
@@ -27,6 +28,7 @@ public:
 	bool getDerecha();
 	bool getDesactivado();
 	int getNumPaso();
+	char getNombre();
 
 	//sets
 	void setArriba(bool);
@@ -35,6 +37,7 @@ public:
 	void setIzquierda(bool);
 	void setDesactivado(bool);
 	void setNumPaso(int);
+	void setNombre(char);
 
 	friend ostream& operator<<(ostream&, const Punto&);
 
