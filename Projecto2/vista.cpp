@@ -27,7 +27,7 @@ int vista::menuJuego()
 	system("cls");
 	return opcion;
 }
-bool vista::iniciarSesion(empresaDots* empresa) // false si el codigo o id son incorrectos
+bool vista::iniciarSesion(empresaDots* empresa) // false si el codigo o id son incorrectos   - Aqui se entra si elige jugar
 {
 	string id, codigo;
 
@@ -44,7 +44,7 @@ bool vista::iniciarSesion(empresaDots* empresa) // false si el codigo o id son i
 	else
 		return false;
 }
-int vista::modoDeJuego()
+int vista::modoDeJuego() // si inicio sesion true
 {
 	int opcion;
 
