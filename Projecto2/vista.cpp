@@ -45,11 +45,35 @@ int vista::modoDeJuego() // si inicio sesion true
 	int opcion;
 
 	system("cls");
-	imprimeCadena("[1] Jugador vs Jugador\n");
-	imprimeCadena("[2] Jugador vs Maquina\n");
+	imprimeCadena("[1] Jugador vs Jugador\n"); // Metodo aparte
+	imprimeCadena("[2] Jugador vs Maquina\n"); //Metodo aparte
 	imprimeCadena("Opcion: "); opcion = leerEntero();
 	return opcion;
 }
+ProcesaCompuesto* vista::crearCampo()
+{
+	int opcion = 0;
+	CampoResultante* composite = new CampoResultante;
+
+	while (opcion != 4)
+	{
+		imprimeCadena("Seleccione el tipo de campo\n");
+		imprimeCadena("[1] Campo 6 puntos\n");
+		imprimeCadena("[2] Campo 9 puntos\n");
+		imprimeCadena("[3] Campo 15 puntos\n");
+		imprimeCadena("Opcion: ");
+		opcion = leerEntero();
+
+		switch (opcion)
+		{
+			case 1: composite->ingresaCampo(new CampoSeisPuntos); break;
+			case 2: composite->ingresaCampo(new CampoNuevePuntos); break;
+			case 3: composite->ingresaCampo(new CampoQuincePuntos); break;
+		}
+		return new ProcesaCompuesto(composite->retornaContenedor());
+	}
+}
+
 
 int vista::menuEmpresa()
 {
