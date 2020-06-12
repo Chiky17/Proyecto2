@@ -175,6 +175,7 @@
     <ClInclude Include="maquina.h" />
     <ClInclude Include="ProcesaCompuesto.h" />
     <ClInclude Include="Punto.h" />
+    <ClInclude Include="utiles.h" />
     <ClInclude Include="vista.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

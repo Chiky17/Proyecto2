@@ -9,7 +9,7 @@ public:
 	controladora();
 	virtual ~controladora();
 
-
+	
 	//Controles temporales para empresa - jugador
 	void controlMenuEmpresa();
 	void controlSuscribirJugador();
