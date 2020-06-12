@@ -15,7 +15,6 @@ int vista::menuEmpresa()
 	system("cls");
 	return opcion;
 }
-
 void vista::suscribirJugador(empresaDots* empresa)
 {
 	string id, nom;
@@ -35,7 +34,6 @@ void vista::suscribirJugador(empresaDots* empresa)
 	}
 	system("pause");
 }
-
 void vista::codigoActual(empresaDots* empresa)
 {
 	string id;
@@ -53,13 +51,11 @@ void vista::codigoActual(empresaDots* empresa)
 	}
 	system("pause");
 }
-
 void vista::jugadoresSuscritos(empresaDots* empresa)
 {
 	cout << empresa->mostrarJugadores() << endl << endl;
 	system("pause");
 }
-
 void vista::simulacionCambioDia(empresaDots* empresa)
 {
 	empresa->cambioDeDia();
