@@ -149,6 +149,10 @@
     <ClCompile Include="controladora.cpp" />
     <ClCompile Include="empresaDots.cpp" />
     <ClCompile Include="EstraAleatorio.cpp" />
+    <ClCompile Include="EstraCentral.cpp" />
+    <ClCompile Include="EstraCercano.cpp" />
+    <ClCompile Include="EstraIslas.cpp" />
+    <ClCompile Include="EstraPeriferico.cpp" />
     <ClCompile Include="jugador.cpp" />
     <ClCompile Include="listaJugador.cpp" />
     <ClCompile Include="main.cpp" />
@@ -169,6 +173,10 @@
     <ClInclude Include="controladora.h" />
     <ClInclude Include="empresaDots.h" />
     <ClInclude Include="EstraAleatorio.h" />
+    <ClInclude Include="EstraCentral.h" />
+    <ClInclude Include="EstraCercano.h" />
+    <ClInclude Include="EstraIslas.h" />
+    <ClInclude Include="EstraPeriferico.h" />
     <ClInclude Include="Estrategia.h" />
     <ClInclude Include="jugador.h" />
     <ClInclude Include="listaJugador.h" />
