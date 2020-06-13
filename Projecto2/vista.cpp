@@ -27,7 +27,7 @@ int vista::menuJuego()
 	system("cls");
 	return opcion;
 }
-bool vista::iniciarSesion(empresaDots* empresa) // false si el codigo o id son incorrectos   - Aqui se entra si elige jugar
+bool vista::iniciarSesion(empresaDots* empresa) // false si el codigo o id son incorrectos - Aqui se entra si elige jugar
 {
 	string id, codigo;
 
@@ -45,6 +45,7 @@ int vista::modoDeJuego() // si inicio sesion true
 	int opcion;
 
 	system("cls");
+	imprimeCadena("Seleccione el modo de juego\n");
 	imprimeCadena("[1] Jugador vs Jugador\n"); // Metodo aparte
 	imprimeCadena("[2] Jugador vs Maquina\n"); //Metodo aparte
 	imprimeCadena("Opcion: "); opcion = leerEntero();
@@ -61,6 +62,7 @@ ProcesaCompuesto* vista::crearCampo()
 		imprimeCadena("[1] Campo 6 puntos\n");
 		imprimeCadena("[2] Campo 9 puntos\n");
 		imprimeCadena("[3] Campo 15 puntos\n");
+		imprimeCadena("[4] Salir\n");
 		imprimeCadena("Opcion: ");
 		opcion = leerEntero();
 

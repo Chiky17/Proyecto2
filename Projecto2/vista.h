@@ -15,6 +15,7 @@ public:
 	static bool iniciarSesion(empresaDots*);
 	static int modoDeJuego();
 	static ProcesaCompuesto* crearCampo();
+	//static 
 	//Empresa - Jugador
 	static int menuEmpresa();
 	static void suscribirJugador(empresaDots*);
