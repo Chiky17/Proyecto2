@@ -75,7 +75,10 @@ ProcesaCompuesto* vista::crearCampo()
 				if(cont < 27)
 					composite->ingresaCampo(new CampoSeisPuntos);
 				else
+				{
+					imprimeCadena("Espacio de pantalla excedido");
 					return new ProcesaCompuesto(composite->retornaContenedor());
+				}
 			}break;
 			case 2:
 			{
@@ -83,7 +86,10 @@ ProcesaCompuesto* vista::crearCampo()
 				if (cont < 27)
 					composite->ingresaCampo(new CampoNuevePuntos);
 				else
+				{
+					imprimeCadena("Espacio de pantalla excedido");
 					return new ProcesaCompuesto(composite->retornaContenedor());
+				}
 			}break;
 			case 3:
 			{
@@ -91,7 +97,10 @@ ProcesaCompuesto* vista::crearCampo()
 				if (cont < 27)
 					composite->ingresaCampo(new CampoQuincePuntos);
 				else
+				{
+					imprimeCadena("Espacio de pantalla excedido");
 					return new ProcesaCompuesto(composite->retornaContenedor());
+				}
 			}break;
 		}
 		
