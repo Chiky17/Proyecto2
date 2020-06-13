@@ -76,8 +76,9 @@ ProcesaCompuesto* vista::crearCampo()
 					composite->ingresaCampo(new CampoSeisPuntos);
 				else
 				{
-					imprimeCadena("Espacio de pantalla excedido");
-					return new ProcesaCompuesto(composite->retornaContenedor());
+					string aux = enteroAstring(cont);
+					imprimeCadena("Espacio de pantalla excedido, " + aux + " columnas");
+					return nullptr;
 				}
 			}break;
 			case 2:
@@ -87,8 +88,9 @@ ProcesaCompuesto* vista::crearCampo()
 					composite->ingresaCampo(new CampoNuevePuntos);
 				else
 				{
-					imprimeCadena("Espacio de pantalla excedido");
-					return new ProcesaCompuesto(composite->retornaContenedor());
+					string aux = enteroAstring(cont);
+					imprimeCadena("Espacio de pantalla excedido, "+aux+" columnas");
+					return nullptr; 
 				}
 			}break;
 			case 3:
@@ -98,8 +100,9 @@ ProcesaCompuesto* vista::crearCampo()
 					composite->ingresaCampo(new CampoQuincePuntos);
 				else
 				{
-					imprimeCadena("Espacio de pantalla excedido");
-					return new ProcesaCompuesto(composite->retornaContenedor());
+					string aux = enteroAstring(cont);
+					imprimeCadena("Espacio de pantalla excedido, " + aux + " columnas");
+					return nullptr;
 				}
 			}break;
 		}
@@ -134,8 +137,13 @@ void vista::turnoJugador(char nom, ContenedorM* matriz,Partida* parti)
 Partida* vista::partidaJugadorJugador()
 {
 	Partida* parti = new Partida; // se crea la partida que despues se agregra a juego(controladora) en su lista de partidas
-	parti->setProCompu(crearCampo()); // el procesaCompuesto de la partida (su campo)
-	system("pause");
+	ProcesaCompuesto* campo = nullptr;
+	while (campo == nullptr)
+	{
+		campo = crearCampo();
+		system("pause");
+	}
+	parti->setProCompu(campo); // el procesaCompuesto de la partida (su campo)
 	ListaJugada* lista = new ListaJugada; // el registro de las jugadas de las partidas
 	parti->setJugadas(lista);
 	
@@ -162,7 +170,7 @@ Partida* vista::partidaJugadorJugador()
 			}
 			if (!matriz->estaLlena())
 				cont++;
-		}else
+		}
 
 		if (cont % 2 == 0)
 		{
