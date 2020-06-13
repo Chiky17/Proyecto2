@@ -53,13 +53,13 @@ int vista::modoDeJuego() // si inicio sesion true
 }
 ProcesaCompuesto* vista::crearCampo()
 {
-	int opcion = 0;
+	int opcion = 0, int cont=0;
 	CampoResultante* composite = new CampoResultante;
 
 	while (opcion != 4)
 	{
 		system("cls");
-		imprimeCadena("Seleccione el tipo de campo");
+		imprimeCadena("Seleccione el tipo de campo (El maximo de columnas por tema espacio de pantalla es 26)");
 		imprimeCadena("[1] Campo 6 puntos");
 		imprimeCadena("[2] Campo 9 puntos");
 		imprimeCadena("[3] Campo 15 puntos");
@@ -69,9 +69,30 @@ ProcesaCompuesto* vista::crearCampo()
 
 		switch (opcion)
 		{
-			case 1: composite->ingresaCampo(new CampoSeisPuntos); break;
-			case 2: composite->ingresaCampo(new CampoNuevePuntos); break;
-			case 3: composite->ingresaCampo(new CampoQuincePuntos); break;
+			case 1: 
+			{
+				cont += 2;
+				if(cont < 27)
+					composite->ingresaCampo(new CampoSeisPuntos);
+				else
+					return new ProcesaCompuesto(composite->retornaContenedor());
+			}break;
+			case 2:
+			{
+				cont += 3;
+				if (cont < 27)
+					composite->ingresaCampo(new CampoNuevePuntos);
+				else
+					return new ProcesaCompuesto(composite->retornaContenedor());
+			}break;
+			case 3:
+			{
+				cont += 5;
+				if (cont < 27)
+					composite->ingresaCampo(new CampoQuincePuntos);
+				else
+					return new ProcesaCompuesto(composite->retornaContenedor());
+			}break;
 		}
 		
 	}//retorne excepcion si es mas grande de lo debido 
