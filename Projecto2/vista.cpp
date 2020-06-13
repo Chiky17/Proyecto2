@@ -59,7 +59,7 @@ ProcesaCompuesto* vista::crearCampo()
 	while (opcion != 4)
 	{
 		system("cls");
-		imprimeCadena("Seleccione el tipo de campo (El maximo de columnas por tema espacio de pantalla es 26)");
+		imprimeCadena("Seleccione el tipo de campo (El maximo de columnas por tema espacio de pantalla es 30)");
 		imprimeCadena("[1] Campo 6 puntos");
 		imprimeCadena("[2] Campo 9 puntos");
 		imprimeCadena("[3] Campo 15 puntos");
@@ -71,8 +71,8 @@ ProcesaCompuesto* vista::crearCampo()
 		{
 			case 1: 
 			{
-				cont += 2;
-				if(cont < 27)
+				cont +=2;
+				if(cont <= 30)
 					composite->ingresaCampo(new CampoSeisPuntos);
 				else
 				{
@@ -83,7 +83,7 @@ ProcesaCompuesto* vista::crearCampo()
 			case 2:
 			{
 				cont += 3;
-				if (cont < 27)
+				if (cont <= 30)
 					composite->ingresaCampo(new CampoNuevePuntos);
 				else
 				{
@@ -93,8 +93,8 @@ ProcesaCompuesto* vista::crearCampo()
 			}break;
 			case 3:
 			{
-				cont += 5;
-				if (cont < 27)
+				cont += 3;
+				if (cont <= 30)
 					composite->ingresaCampo(new CampoQuincePuntos);
 				else
 				{
@@ -135,6 +135,7 @@ Partida* vista::partidaJugadorJugador()
 {
 	Partida* parti = new Partida; // se crea la partida que despues se agregra a juego(controladora) en su lista de partidas
 	parti->setProCompu(crearCampo()); // el procesaCompuesto de la partida (su campo)
+	system("pause");
 	ListaJugada* lista = new ListaJugada; // el registro de las jugadas de las partidas
 	parti->setJugadas(lista);
 	

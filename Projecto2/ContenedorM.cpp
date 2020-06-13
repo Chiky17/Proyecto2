@@ -40,7 +40,10 @@ string ContenedorM::toString(char nom) {
 			if (i == 0)
 				s << "   " << i;
 			else
-				s << "    " << i;
+				if (i >= 10)
+					s << "   " << i;
+				else
+					s << "    " << i;
 	for (int i = 0; i < fil; i++)
 	{
 		for (int j = 0; j < col; j++)
