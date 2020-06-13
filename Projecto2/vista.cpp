@@ -64,7 +64,7 @@ ProcesaCompuesto* vista::crearCampo()
 		imprimeCadena("[1] Campo 6 puntos");
 		imprimeCadena("[2] Campo 9 puntos");
 		imprimeCadena("[3] Campo 15 puntos");
-		imprimeCadena("[4] Salir");
+		imprimeCadena("[4] Continuar");
 		imprimSinEndl("Opcion: ");
 		opcion = leerEntero();
 
@@ -109,7 +109,10 @@ ProcesaCompuesto* vista::crearCampo()
 		}
 		
 	}//retorne excepcion si es mas grande de lo debido 
-	return new ProcesaCompuesto(composite->retornaContenedor());
+	if (composite->getCan() > 0)
+		return new ProcesaCompuesto(composite->retornaContenedor());
+	else
+		return nullptr;
 }
 void vista::turnoJugador(char nom, ContenedorM* matriz,Partida* parti)
 {

@@ -14,6 +14,8 @@ public:
 	string getCodigo();
 	void ingresaCampo(CampoAbstracto*);
 	ContenedorV* retornaContenedor();
+	
+	int getCan();
 
 };
 

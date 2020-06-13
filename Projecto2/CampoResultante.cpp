@@ -16,3 +16,7 @@ void CampoResultante::ingresaCampo(CampoAbstracto* obj) {
 ContenedorV* CampoResultante::retornaContenedor() {
 	return vec;
 }
+int CampoResultante::getCan()
+{
+	return vec->getCan();
+}
