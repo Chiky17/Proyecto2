@@ -6,6 +6,7 @@
 #include"CampoQuincePuntos.h"
 #include"CampoResultante.h"
 #include "Partida.h"
+using namespace std;
 class vista
 {
 public:

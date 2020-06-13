@@ -8,6 +8,7 @@ class ListaJugada
 private:
 	nodoJugada* primero;
 	nodoJugada* actual;
+	int can = 0;
 public:
 	ListaJugada();
 	void insertarFinal(Jugada*);
@@ -17,6 +18,9 @@ public:
 	int cuentaNodos();
 	bool listaVacia();
 	~ListaJugada();
+
+	void guardarJugadas(ostream&);
+	static ListaJugada* recuperarJugadas(istream&);
 };
 
 

@@ -5,11 +5,12 @@
 #include"ProcesaCompuesto.h"
 
 using namespace std;
-
+ 
 class Partida {
 private:
 	ListaJugada* jugadas;
 	ProcesaCompuesto* proCompu;
+	int can = 0;
 public:
 	Partida(ListaJugada* = NULL, ProcesaCompuesto* = NULL);
 	~Partida();
@@ -21,4 +22,6 @@ public:
 	void setProCompu(ProcesaCompuesto*);
 
 	string toString();
+
+	void guardar(ostream&);
 };

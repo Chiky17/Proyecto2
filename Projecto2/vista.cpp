@@ -126,7 +126,7 @@ void vista::turnoJugador(char nom, ContenedorM* matriz,Partida* parti)
 	imprimSinEndl("Fila: "); x1 = leerEntero();
 	if (x1 == 911) { throw 911; }
 	imprimSinEndl("Columna: "); y1 = leerEntero();
-	imprimeCadena("Se concecta con: ");
+	imprimeCadena("Se conecta con: ");
 	imprimSinEndl("Fila: "); x2 = leerEntero();
 	imprimSinEndl("Columna: "); y2 = leerEntero();
 
@@ -200,8 +200,27 @@ Partida* vista::partidaJugadorJugador()
 			}
 		}
 	}
-	catch (int e) {
+	catch (int)
+	{
+		system("cls");
+		imprimeCadena(matriz->toString(' '));
 		imprimeCadena("\nPartida terminada...");
+		string aux1 = enteroAstring(puntosA);
+		string aux2 = enteroAstring(puntosB);
+		if (puntosA > puntosB)
+			if (puntosA == 1)
+				imprimeCadena("Ganador Jugador A con " + aux1 + " punto");
+			else
+				imprimeCadena("Ganador Jugador A con " + aux1 + " puntos");
+		else
+			if (puntosA == puntosB)
+				imprimeCadena("El juego termino en empate, con ambos jugadores con " + aux1 + " puntos");
+			else
+				if (puntosB > puntosA)
+					if (puntosB == 1)
+						imprimeCadena("Ganador Jugador B con " + aux2 + " punto");
+					else
+						imprimeCadena("Ganador Jugador B con " + aux2 + " puntos");
 		imprimeCadena("<Enter>");
 		esperandoEnter();
 	}

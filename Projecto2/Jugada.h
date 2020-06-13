@@ -1,7 +1,7 @@
 #pragma once
-#include<sstream>
-#include<string>
 
+#include <string>
+#include <sstream>
 using namespace std;
 
 class Jugada {
@@ -28,4 +28,6 @@ public:
 
 	string toString();
 
+	void guardar(ostream&);
+	static Jugada* recuperar(istream&);
 };
