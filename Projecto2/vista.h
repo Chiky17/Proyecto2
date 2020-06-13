@@ -5,7 +5,7 @@
 #include"CampoSeisPuntos.h"
 #include"CampoQuincePuntos.h"
 #include"CampoResultante.h"
-
+#include "Partida.h"
 class vista
 {
 public:
@@ -15,6 +15,8 @@ public:
 	static bool iniciarSesion(empresaDots*);
 	static int modoDeJuego();
 	static ProcesaCompuesto* crearCampo();
+	static Partida* partidaJugadorJugador();
+	static void turnoJugador(char, ContenedorM*);
 	//static 
 	//Empresa - Jugador
 	static int menuEmpresa();

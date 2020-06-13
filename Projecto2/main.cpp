@@ -1,7 +1,9 @@
 #include "controladora.h"
 int main()
 {
-	controladora con;
+	/*controladora con;
 
-	con.controlMenuEmpresa();
+	con.controlMenuEmpresa();*/
+
+	vista::partidaJugadorJugador();
 }

@@ -1,5 +1,6 @@
 #include "vista.h"
 #include "utiles.h"
+#include "arbitro.h"
 int vista::menuGeneral()
 {
 	int opcion;
@@ -57,6 +58,7 @@ ProcesaCompuesto* vista::crearCampo()
 
 	while (opcion != 4)
 	{
+		system("cls");
 		imprimeCadena("Seleccione el tipo de campo");
 		imprimeCadena("[1] Campo 6 puntos");
 		imprimeCadena("[2] Campo 9 puntos");
@@ -71,10 +73,85 @@ ProcesaCompuesto* vista::crearCampo()
 			case 2: composite->ingresaCampo(new CampoNuevePuntos); break;
 			case 3: composite->ingresaCampo(new CampoQuincePuntos); break;
 		}
-		return new ProcesaCompuesto(composite->retornaContenedor());
+		
 	}//retorne excepcion si es mas grande de lo debido 
+	return new ProcesaCompuesto(composite->retornaContenedor());
 }
+void vista::turnoJugador(char nom, ContenedorM* matriz)
+{
+	int x1, y1, x2, y2;
+	string aux = charAstring(nom);
+	imprimeCadena("Jugador "+ aux);
+	imprimSinEndl("Vertical: "); x1 = leerEntero();
+	imprimSinEndl("Horizontal: "); y1 = leerEntero();
+	imprimeCadena("Se concecta con: ");
+	imprimSinEndl("Vertical: "); x2 = leerEntero();
+	imprimSinEndl("Horizontal: "); y2 = leerEntero();
 
+	while (!arbitro::dirrecionJugada(x1, y1, x2, y2,matriz))
+	{
+		imprimeCadena("Jugada Invalida, vuelva a intentarlo");
+		imprimSinEndl("Vertical: "); x1 = leerEntero();
+		imprimSinEndl("Horizontal: "); y1 = leerEntero();
+		imprimeCadena("Se concecta con: ");
+		imprimSinEndl("Vertical: "); x2 = leerEntero();
+		imprimSinEndl("Horizontal: "); y2 = leerEntero();
+	}
+	
+	matriz->toString(nom);
+}
+Partida* vista::partidaJugadorJugador()
+{
+	Partida* parti = new Partida; // se crea la partida que despues se agregra a juego(controladora) en su lista de partidas
+	parti->setProCompu(crearCampo()); // el procesaCompuesto de la partida (su campo)
+	ListaJugada* lista = new ListaJugada; // el registro de las jugadas de las partidas
+	parti->setJugadas(lista);
+	
+	char jugadorA = 'A', jugadorB = 'B';
+	int cont = 1;
+	int puntosA = 0, puntosB = 0; // puntos de jugador A y B respectivamente
+	ContenedorM* matriz = parti->getProCompu()->getMatriz(); // para manejar la matriz de forma individual
+
+	while (!matriz->estaLlena())
+	{
+		system("cls");
+		
+		if (cont % 2 != 0)
+		{
+			puntosA = matriz->cuentaPuntos(jugadorA, matriz->toString(' '));
+			imprimeCadena(matriz->toString(jugadorA));
+			turnoJugador(jugadorA, matriz);
+			while (!matriz->estaLlena() && puntosA < matriz->cuentaPuntos(jugadorA, matriz->toString(' ')))
+			{
+				system("cls");
+				puntosA = matriz->cuentaPuntos(jugadorA, matriz->toString(' '));
+				imprimeCadena(matriz->toString('A'));
+				turnoJugador(jugadorA, matriz);
+			}
+			cont++;
+		}
+		if (cont % 2 == 0)
+		{
+			system("cls");
+			puntosB = matriz->cuentaPuntos(jugadorB, matriz->toString(' '));
+			imprimeCadena(matriz->toString(jugadorB));
+			turnoJugador(jugadorB, matriz);
+
+			
+
+			while (!matriz->estaLlena() && puntosB < matriz->cuentaPuntos(jugadorB, matriz->toString(' ')))
+			{
+				system("cls");
+				puntosB = matriz->cuentaPuntos(jugadorB, matriz->toString(' '));
+				imprimeCadena(matriz->toString('B'));
+				turnoJugador(jugadorB, matriz);
+			}
+			cont++;
+		}
+	}
+	imprimeCadena(matriz->toString(jugadorA));
+	return parti;
+}
 
 int vista::menuEmpresa()
 {

@@ -73,18 +73,18 @@ string ListaPartida::toString()
 }
 
 
-Partida* ListaPartida::getPartida(string nom)
-{
-	actual = primero;
-	while (actual != NULL)
-	{
-		if (actual->getInfo()->getNombre() == nom) {
-			return actual->getInfo();
-		}
-		actual = actual->getSig();
-	}
-	return NULL;
-}
+//Partida* ListaPartida::getPartida(string nom)
+//{
+//	actual = primero;
+//	while (actual != NULL)
+//	{
+//		if (actual->getInfo()->getNombre() == nom) {
+//			return actual->getInfo();
+//		}
+//		actual = actual->getSig();
+//	}
+//	return NULL;
+//}
 
 
 bool ListaPartida::listaVacia() {

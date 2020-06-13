@@ -137,36 +137,100 @@ void ContenedorM::puntoJugador(int x1, int y1, char nom)
 }
 bool ContenedorM::estaLlena()
 {
-	for(int i = 0; i < fil; i++)
+	if (!m[0][0]->getDerecha() || !m[0][0]->getAbajo())
+		return false;
+	for (int i = 0; i < fil; i++)
 		for (int j = 0; j < columnaFinal(); j++)
 		{
 			if (m[i][j] != NULL)
-				if (i == 0 && j == 0)
+			{
+				if (!m[i][j]->getDesactivado())
 				{
-					if (!m[i][j]->getAbajo() || !m[i][j]->getDerecha())
-						return false;
-				}
-				else
-					if (i == 0)
+					if (i == 0 && j != 0)
 					{
-						if (!m[i][j]->getAbajo() || !m[i][j]->getDerecha() || !m[i][j]->getArriba())
-							return false;
-					}
-					else
-						if (j == 0)
+						if (j == columnaFinal() - 1)
 						{
-							if (j != columnaFinal() - 1)
-							{
-								if (!m[i][j]->getAbajo() || !m[i][j]->getDerecha() || !m[i][j]->getIzquierda())
-									return false;
-							}
-							else
-								if (!m[i][j]->getAbajo() || !m[i][j]->getIzquierda())
-									return false;
+							if (!m[i][j]->getAbajo() || !m[i][j]->getIzquierda())
+								return false;
 						}
 						else
-							if (!m[i][j]->getAbajo() || !m[i][j]->getDerecha() || !m[i][j]->getArriba() || !m[i][j]->getIzquierda())
+							if (!m[i][j]->getAbajo() || !m[i][j]->getIzquierda() || !m[i][j]->getDerecha())
 								return false;
+					}
+					if (j == 0 && i != 0)
+					{
+						if (m[i + 1][j]->getDesactivado())
+						{
+							if (!m[i][j]->getDerecha() || !m[i][j]->getArriba())
+								return false;
+						}
+						else
+							if (!m[i][j]->getDerecha() || !m[i][j]->getArriba() || !m[i][j]->getAbajo())
+								return false;
+					}
+					if (i != 0 && j != 0)
+					{
+						if (i + 1 < 5)
+							if (m[i + 1][j]->getDesactivado())
+							{
+								if (j == columnaFinal() - 1)
+								{
+									if (!m[i][j]->getArriba() || !m[i][j]->getIzquierda())
+										return false;
+								}
+								else
+								{
+									if (m[i][j + 1]->getDesactivado())
+									{
+										if (!m[i][j]->getArriba() || !m[i][j]->getIzquierda())
+											return false;
+									}
+									else
+										if (!m[i][j]->getArriba() || !m[i][j]->getDerecha() || !m[i][j]->getIzquierda())
+											return false;
+									if (m[i][j - 1]->getDesactivado())
+									{
+										if (!m[i][j]->getArriba() || !m[i][j]->getDerecha())
+											return false;
+									}
+									else
+										if (!m[i][j]->getArriba() || !m[i][j]->getDerecha() || !m[i][j]->getIzquierda())
+											return false;
+								}
+							}
+							else
+							{
+								if (j == columnaFinal() - 1)
+								{
+									if (!m[i][j]->getArriba() || !m[i][j]->getAbajo() || !m[i][j]->getIzquierda())
+										return false;
+								}
+								else
+								{
+									if (m[i][j + 1]->getDesactivado())
+									{
+										if (!m[i][j]->getArriba() || !m[i][j]->getIzquierda() || !m[i][j]->getAbajo())
+											return false;
+									}
+									else
+										if (!m[i][j - 1]->getDesactivado())
+											if (!m[i][j]->getArriba() || !m[i][j]->getDerecha() || !m[i][j]->getIzquierda() || !m[i][j]->getAbajo())
+												return false;
+
+									if (m[i][j - 1]->getDesactivado())
+									{
+										if (!m[i][j]->getArriba() || !m[i][j]->getDerecha() || !m[i][j]->getAbajo())
+											return false;
+									}
+									else
+										if (!m[i][j + 1]->getDesactivado())
+											if (!m[i][j]->getArriba() || !m[i][j]->getDerecha() || !m[i][j]->getIzquierda() || !m[i][j]->getAbajo())
+												return false;
+								}
+							}
+					}
+				}
+			}
 		}
 	return true;
 }
