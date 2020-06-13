@@ -53,7 +53,7 @@ int vista::modoDeJuego() // si inicio sesion true
 }
 ProcesaCompuesto* vista::crearCampo()
 {
-	int opcion = 0, int cont=0;
+	int opcion = 0, cont=0;
 	CampoResultante* composite = new CampoResultante;
 
 	while (opcion != 4)
