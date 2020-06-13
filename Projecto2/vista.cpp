@@ -121,8 +121,10 @@ void vista::turnoJugador(char nom, ContenedorM* matriz,Partida* parti)
 {
 	int x1, y1, x2, y2;
 	string aux = charAstring(nom);
+	imprimeCadena(" -> Ingrese lo solicitado \n (En caso de querer terminar la partida ingrese el numero 911 en fila...)\n");
 	imprimeCadena("Jugador "+ aux);
 	imprimSinEndl("Fila: "); x1 = leerEntero();
+	if (x1 == 911) { throw 911; }
 	imprimSinEndl("Columna: "); y1 = leerEntero();
 	imprimeCadena("Se concecta con: ");
 	imprimSinEndl("Fila: "); x2 = leerEntero();
@@ -148,7 +150,7 @@ Partida* vista::partidaJugadorJugador()
 	while (campo == nullptr)
 	{
 		campo = crearCampo();
-		Sleep(2000);
+		Sleep(1000);
 	}
 	parti->setProCompu(campo); // el procesaCompuesto de la partida (su campo)
 	ListaJugada* lista = new ListaJugada; // el registro de las jugadas de las partidas
@@ -159,42 +161,49 @@ Partida* vista::partidaJugadorJugador()
 	int puntosA = 0, puntosB = 0; // puntos de jugador A y B respectivamente
 	ContenedorM* matriz = parti->getProCompu()->getMatriz(); // para manejar la matriz de forma individual
 
-	while (!matriz->estaLlena())
-	{
-		system("cls");
-		
-		if (cont % 2 != 0)
-		{
-			puntosA = matriz->cuentaPuntos(jugadorA, matriz->toString(' '));
-			imprimeCadena(matriz->toString(jugadorA));
-			turnoJugador(jugadorA, matriz, parti);
-			while (!matriz->estaLlena() && puntosA < matriz->cuentaPuntos(jugadorA, matriz->toString(' ')))
-			{
-				system("cls");
-				puntosA = matriz->cuentaPuntos(jugadorA, matriz->toString(' '));
-				imprimeCadena(matriz->toString('A'));
-				turnoJugador(jugadorA, matriz, parti);
-			}
-			if (!matriz->estaLlena())
-				cont++;
-		}
-
-		if (cont % 2 == 0)
+	try {
+		while (!matriz->estaLlena())
 		{
 			system("cls");
-			puntosB = matriz->cuentaPuntos(jugadorB, matriz->toString(' '));
-			imprimeCadena(matriz->toString(jugadorB));
-			turnoJugador(jugadorB, matriz, parti);
-			while (!matriz->estaLlena() && puntosB < matriz->cuentaPuntos(jugadorB, matriz->toString(' ')))
+
+			if (cont % 2 != 0)
+			{
+				puntosA = matriz->cuentaPuntos(jugadorA, matriz->toString(' '));
+				imprimeCadena(matriz->toString(jugadorA));
+				turnoJugador(jugadorA, matriz, parti);
+				while (!matriz->estaLlena() && puntosA < matriz->cuentaPuntos(jugadorA, matriz->toString(' ')))
+				{
+					system("cls");
+					puntosA = matriz->cuentaPuntos(jugadorA, matriz->toString(' '));
+					imprimeCadena(matriz->toString('A'));
+					turnoJugador(jugadorA, matriz, parti);
+				}
+				if (!matriz->estaLlena())
+					cont++;
+			}
+
+			if (cont % 2 == 0)
 			{
 				system("cls");
 				puntosB = matriz->cuentaPuntos(jugadorB, matriz->toString(' '));
-				imprimeCadena(matriz->toString('B'));
+				imprimeCadena(matriz->toString(jugadorB));
 				turnoJugador(jugadorB, matriz, parti);
+				while (!matriz->estaLlena() && puntosB < matriz->cuentaPuntos(jugadorB, matriz->toString(' ')))
+				{
+					system("cls");
+					puntosB = matriz->cuentaPuntos(jugadorB, matriz->toString(' '));
+					imprimeCadena(matriz->toString('B'));
+					turnoJugador(jugadorB, matriz, parti);
+				}
+				if (!matriz->estaLlena())
+					cont++;
 			}
-			if (!matriz->estaLlena())
-				cont++;
 		}
+	}
+	catch (int e) {
+		imprimeCadena("\nPartida terminada...");
+		imprimeCadena("<Enter>");
+		esperandoEnter();
 	}
 	system("cls");
 	imprimeCadena(matriz->toString(' '));
