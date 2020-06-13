@@ -16,7 +16,7 @@ public:
 	static int modoDeJuego();
 	static ProcesaCompuesto* crearCampo();
 	static Partida* partidaJugadorJugador();
-	static void turnoJugador(char, ContenedorM*);
+	static void turnoJugador(char, ContenedorM*, Partida*);
 	//static 
 	//Empresa - Jugador
 	static int menuEmpresa();

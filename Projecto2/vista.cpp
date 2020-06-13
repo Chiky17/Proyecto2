@@ -77,7 +77,7 @@ ProcesaCompuesto* vista::crearCampo()
 	}//retorne excepcion si es mas grande de lo debido 
 	return new ProcesaCompuesto(composite->retornaContenedor());
 }
-void vista::turnoJugador(char nom, ContenedorM* matriz)
+void vista::turnoJugador(char nom, ContenedorM* matriz,Partida* parti)
 {
 	int x1, y1, x2, y2;
 	string aux = charAstring(nom);
@@ -93,11 +93,12 @@ void vista::turnoJugador(char nom, ContenedorM* matriz)
 		imprimeCadena("Jugada Invalida, vuelva a intentarlo");
 		imprimSinEndl("Vertical: "); x1 = leerEntero();
 		imprimSinEndl("Horizontal: "); y1 = leerEntero();
-		imprimeCadena("Se concecta con: ");
+		imprimeCadena("Se conecta con: ");
 		imprimSinEndl("Vertical: "); x2 = leerEntero();
 		imprimSinEndl("Horizontal: "); y2 = leerEntero();
 	}
-	
+	Jugada* jugadita = new Jugada(x1, y1, x2, y2, nom);
+	parti->getJugadas()->insertarFinal(jugadita);
 	matriz->toString(nom);
 }
 Partida* vista::partidaJugadorJugador()
@@ -120,36 +121,33 @@ Partida* vista::partidaJugadorJugador()
 		{
 			puntosA = matriz->cuentaPuntos(jugadorA, matriz->toString(' '));
 			imprimeCadena(matriz->toString(jugadorA));
-			turnoJugador(jugadorA, matriz);
+			turnoJugador(jugadorA, matriz, parti);
 			while (!matriz->estaLlena() && puntosA < matriz->cuentaPuntos(jugadorA, matriz->toString(' ')))
 			{
 				system("cls");
 				puntosA = matriz->cuentaPuntos(jugadorA, matriz->toString(' '));
 				imprimeCadena(matriz->toString('A'));
-				turnoJugador(jugadorA, matriz);
+				turnoJugador(jugadorA, matriz, parti);
 			}
 			cont++;
-		}
+		}else
 		if (cont % 2 == 0)
 		{
 			system("cls");
 			puntosB = matriz->cuentaPuntos(jugadorB, matriz->toString(' '));
 			imprimeCadena(matriz->toString(jugadorB));
-			turnoJugador(jugadorB, matriz);
-
-			
-
+			turnoJugador(jugadorB, matriz, parti);
 			while (!matriz->estaLlena() && puntosB < matriz->cuentaPuntos(jugadorB, matriz->toString(' ')))
 			{
 				system("cls");
 				puntosB = matriz->cuentaPuntos(jugadorB, matriz->toString(' '));
 				imprimeCadena(matriz->toString('B'));
-				turnoJugador(jugadorB, matriz);
+				turnoJugador(jugadorB, matriz, parti);
 			}
 			cont++;
 		}
 	}
-	imprimeCadena(matriz->toString(jugadorA));
+	imprimeCadena(matriz->toString(' '));
 	return parti;
 }
 
