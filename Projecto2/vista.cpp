@@ -1,6 +1,7 @@
 #include "vista.h"
 #include "utiles.h"
 #include "arbitro.h"
+#include <Windows.h>
 int vista::menuGeneral()
 {
 	int opcion;
@@ -141,7 +142,7 @@ Partida* vista::partidaJugadorJugador()
 	while (campo == nullptr)
 	{
 		campo = crearCampo();
-		system("pause");
+		Sleep(2000);
 	}
 	parti->setProCompu(campo); // el procesaCompuesto de la partida (su campo)
 	ListaJugada* lista = new ListaJugada; // el registro de las jugadas de las partidas
