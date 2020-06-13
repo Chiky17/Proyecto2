@@ -8,7 +8,7 @@ int vista::menuGeneral()
 	imprimeCadena("[1] Juego\n");
 	imprimeCadena("[2] Menu empresa\n");
 	imprimeCadena("[3] Salir\n");
-	imprimeCadena("Opcion: ");
+	imprimSinEndl("Opcion: ");
 	opcion = leerEntero();
 	system("cls");
 	return opcion;
@@ -22,7 +22,7 @@ int vista::menuJuego()
 	imprimeCadena("[1] Jugar\n");
 	imprimeCadena("[2] Ver repeticion\n");
 	imprimeCadena("[3] Volver\n");
-	imprimeCadena("Opcion: ");
+	imprimSinEndl("Opcion: ");
 	opcion = leerEntero();
 	system("cls");
 	return opcion;
@@ -47,7 +47,7 @@ int vista::modoDeJuego() // si inicio sesion true
 	system("cls");
 	imprimeCadena("[1] Jugador vs Jugador\n"); // Metodo aparte
 	imprimeCadena("[2] Jugador vs Maquina\n"); //Metodo aparte
-	imprimeCadena("Opcion: "); opcion = leerEntero();
+	imprimSinEndl("Opcion: "); opcion = leerEntero();
 	return opcion;
 }
 ProcesaCompuesto* vista::crearCampo()
@@ -61,7 +61,7 @@ ProcesaCompuesto* vista::crearCampo()
 		imprimeCadena("[1] Campo 6 puntos\n");
 		imprimeCadena("[2] Campo 9 puntos\n");
 		imprimeCadena("[3] Campo 15 puntos\n");
-		imprimeCadena("Opcion: ");
+		imprimSinEndl("Opcion: ");
 		opcion = leerEntero();
 
 		switch (opcion)
@@ -71,7 +71,7 @@ ProcesaCompuesto* vista::crearCampo()
 			case 3: composite->ingresaCampo(new CampoQuincePuntos); break;
 		}
 		return new ProcesaCompuesto(composite->retornaContenedor());
-	}
+	}//retorne excepcion si es mas grande de lo debido 
 }
 
 
@@ -85,7 +85,7 @@ int vista::menuEmpresa()
 	imprimeCadena("[3] Jugadores suscritos\n");
 	imprimeCadena("[4] Simular cambio de dia\n");
 	imprimeCadena("[5] Salir\n");
-	imprimeCadena("Opcion: ");
+	imprimSinEndl("Opcion: ");
 	opcion = leerEntero();
 	system("cls");
 	return opcion;
