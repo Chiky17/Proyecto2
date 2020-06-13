@@ -5,10 +5,10 @@ int vista::menuGeneral()
 	int opcion;
 
 	system("cls");
-	imprimeCadena("[1] Juego\n");
-	imprimeCadena("[2] Menu empresa\n");
-	imprimeCadena("[3] Salir\n");
-	imprimeCadena("Opcion: ");
+	imprimeCadena("[1] Juego");
+	imprimeCadena("[2] Menu empresa");
+	imprimeCadena("[3] Salir");
+	imprimSinEndl("Opcion: ");
 	opcion = leerEntero();
 	system("cls");
 	return opcion;
@@ -19,15 +19,15 @@ int vista::menuJuego()
 	int opcion;
 
 	system("cls");
-	imprimeCadena("[1] Jugar\n");
-	imprimeCadena("[2] Ver repeticion\n");
-	imprimeCadena("[3] Volver\n");
-	imprimeCadena("Opcion: ");
+	imprimeCadena("[1] Jugar");
+	imprimeCadena("[2] Ver repeticion");
+	imprimeCadena("[3] Volver");
+	imprimSinEndl("Opcion: ");
 	opcion = leerEntero();
 	system("cls");
 	return opcion;
 }
-bool vista::iniciarSesion(empresaDots* empresa) // false si el codigo o id son incorrectos - Aqui se entra si elige jugar
+bool vista::iniciarSesion(empresaDots* empresa) // false si el codigo o id son incorrectos   - Aqui se entra si elige jugar
 {
 	string id, codigo;
 
@@ -45,10 +45,9 @@ int vista::modoDeJuego() // si inicio sesion true
 	int opcion;
 
 	system("cls");
-	imprimeCadena("Seleccione el modo de juego\n");
-	imprimeCadena("[1] Jugador vs Jugador\n"); // Metodo aparte
-	imprimeCadena("[2] Jugador vs Maquina\n"); //Metodo aparte
-	imprimeCadena("Opcion: "); opcion = leerEntero();
+	imprimeCadena("[1] Jugador vs Jugador"); // Metodo aparte
+	imprimeCadena("[2] Jugador vs Maquina"); //Metodo aparte
+	imprimSinEndl("Opcion: "); opcion = leerEntero();
 	return opcion;
 }
 ProcesaCompuesto* vista::crearCampo()
@@ -58,12 +57,12 @@ ProcesaCompuesto* vista::crearCampo()
 
 	while (opcion != 4)
 	{
-		imprimeCadena("Seleccione el tipo de campo\n");
-		imprimeCadena("[1] Campo 6 puntos\n");
-		imprimeCadena("[2] Campo 9 puntos\n");
-		imprimeCadena("[3] Campo 15 puntos\n");
-		imprimeCadena("[4] Salir\n");
-		imprimeCadena("Opcion: ");
+		imprimeCadena("Seleccione el tipo de campo");
+		imprimeCadena("[1] Campo 6 puntos");
+		imprimeCadena("[2] Campo 9 puntos");
+		imprimeCadena("[3] Campo 15 puntos");
+		imprimeCadena("[4] Salir");
+		imprimSinEndl("Opcion: ");
 		opcion = leerEntero();
 
 		switch (opcion)
@@ -73,7 +72,7 @@ ProcesaCompuesto* vista::crearCampo()
 			case 3: composite->ingresaCampo(new CampoQuincePuntos); break;
 		}
 		return new ProcesaCompuesto(composite->retornaContenedor());
-	}
+	}//retorne excepcion si es mas grande de lo debido 
 }
 
 
@@ -82,12 +81,12 @@ int vista::menuEmpresa()
 	int opcion;
 
 	system("cls");
-	imprimeCadena("[1] Suscribir Jugador\n");
-	imprimeCadena("[2] Codigo actual\n");
-	imprimeCadena("[3] Jugadores suscritos\n");
-	imprimeCadena("[4] Simular cambio de dia\n");
-	imprimeCadena("[5] Salir\n");
-	imprimeCadena("Opcion: ");
+	imprimeCadena("[1] Suscribir Jugador");
+	imprimeCadena("[2] Codigo actual");
+	imprimeCadena("[3] Jugadores suscritos");
+	imprimeCadena("[4] Simular cambio de dia");
+	imprimeCadena("[5] Salir");
+	imprimSinEndl("Opcion: ");
 	opcion = leerEntero();
 	system("cls");
 	return opcion;
@@ -107,7 +106,7 @@ void vista::suscribirJugador(empresaDots* empresa)
 	else
 	{
 		system("cls");
-		imprimeCadena("\tEl jugador ya esta suscrito a la empresa\n\n");
+		imprimeCadena("\tEl jugador ya esta suscrito a la empresa\n");
 	}
 	system("pause");
 }
@@ -124,7 +123,7 @@ void vista::codigoActual(empresaDots* empresa)
 	else
 	{
 		system("cls");
-		imprimeCadena( "\tJugador no esta suscrito a la empresa\n\n");
+		imprimeCadena( "\tJugador no esta suscrito a la empresa\n");
 	}
 	system("pause");
 }
