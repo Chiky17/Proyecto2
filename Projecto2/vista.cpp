@@ -91,11 +91,11 @@ void vista::turnoJugador(char nom, ContenedorM* matriz,Partida* parti)
 	while (!arbitro::dirrecionJugada(x1, y1, x2, y2,matriz))
 	{
 		imprimeCadena("Jugada Invalida, vuelva a intentarlo");
-		imprimSinEndl("Vertical: "); x1 = leerEntero();
-		imprimSinEndl("Horizontal: "); y1 = leerEntero();
+		imprimSinEndl("Fila: "); x1 = leerEntero();
+		imprimSinEndl("Columna: "); y1 = leerEntero();
 		imprimeCadena("Se conecta con: ");
-		imprimSinEndl("Vertical: "); x2 = leerEntero();
-		imprimSinEndl("Horizontal: "); y2 = leerEntero();
+		imprimSinEndl("Fila: "); x2 = leerEntero();
+		imprimSinEndl("Columna: "); y2 = leerEntero();
 	}
 	Jugada* jugadita = new Jugada(x1, y1, x2, y2, nom);
 	parti->getJugadas()->insertarFinal(jugadita);
@@ -129,8 +129,10 @@ Partida* vista::partidaJugadorJugador()
 				imprimeCadena(matriz->toString('A'));
 				turnoJugador(jugadorA, matriz, parti);
 			}
-			cont++;
+			if (!matriz->estaLlena())
+				cont++;
 		}else
+
 		if (cont % 2 == 0)
 		{
 			system("cls");
@@ -144,9 +146,11 @@ Partida* vista::partidaJugadorJugador()
 				imprimeCadena(matriz->toString('B'));
 				turnoJugador(jugadorB, matriz, parti);
 			}
-			cont++;
+			if (!matriz->estaLlena())
+				cont++;
 		}
 	}
+	system("cls");
 	imprimeCadena(matriz->toString(' '));
 	return parti;
 }
