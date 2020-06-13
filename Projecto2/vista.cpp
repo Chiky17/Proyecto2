@@ -90,7 +90,7 @@ ProcesaCompuesto* vista::crearCampo()
 				else
 				{
 					string aux = enteroAstring(cont);
-					imprimeCadena("Espacio de pantalla excedido, "+aux+" columnas");
+					imprimeCadena("Espacio de pantalla excedido, " + aux + " columnas");
 					return nullptr; 
 				}
 			}break;
@@ -112,7 +112,10 @@ ProcesaCompuesto* vista::crearCampo()
 	if (composite->getCan() > 0)
 		return new ProcesaCompuesto(composite->retornaContenedor());
 	else
+	{
+		imprimeCadena("No se agrego ningun campo");
 		return nullptr;
+	}
 }
 void vista::turnoJugador(char nom, ContenedorM* matriz,Partida* parti)
 {
