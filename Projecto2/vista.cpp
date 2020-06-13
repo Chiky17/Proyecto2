@@ -82,11 +82,11 @@ void vista::turnoJugador(char nom, ContenedorM* matriz,Partida* parti)
 	int x1, y1, x2, y2;
 	string aux = charAstring(nom);
 	imprimeCadena("Jugador "+ aux);
-	imprimSinEndl("Vertical: "); x1 = leerEntero();
-	imprimSinEndl("Horizontal: "); y1 = leerEntero();
+	imprimSinEndl("Fila: "); x1 = leerEntero();
+	imprimSinEndl("Columna: "); y1 = leerEntero();
 	imprimeCadena("Se concecta con: ");
-	imprimSinEndl("Vertical: "); x2 = leerEntero();
-	imprimSinEndl("Horizontal: "); y2 = leerEntero();
+	imprimSinEndl("Fila: "); x2 = leerEntero();
+	imprimSinEndl("Columna: "); y2 = leerEntero();
 
 	while (!arbitro::dirrecionJugada(x1, y1, x2, y2,matriz))
 	{
