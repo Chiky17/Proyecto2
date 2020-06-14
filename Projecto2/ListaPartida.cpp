@@ -5,12 +5,14 @@ ListaPartida::ListaPartida()
 {
 	primero = NULL;
 	actual = NULL;
+	can = 0;
 }
 void ListaPartida::insertarFinal(Partida* e) {
 	actual = primero;
 	if (primero == NULL) // la lista esta vacia
 	{
 		primero = new nodoPartida(e, NULL);
+		can++;
 	}
 	else
 	{
@@ -19,7 +21,7 @@ void ListaPartida::insertarFinal(Partida* e) {
 			actual = actual->getSig();
 		}
 		actual->setSig(new nodoPartida(e, NULL));
-
+		can++;
 	}
 
 }
@@ -129,7 +131,15 @@ ListaPartida::~ListaPartida() {
 		eliminaFinal();
 	}
 }
-
+//
+//void ListaPartida::guardarJugadas(ostream& salida)
+//{
+//	salida << can << '\n';
+//
+//	for(int i = 1; i <= can; i++)
+//		obtPartida(i)->
+//
+//}
 //--------------------------------------------------------------------------------------------------------------------
 
 nodoPartida::nodoPartida(Partida* e, nodoPartida* s) {

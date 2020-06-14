@@ -22,3 +22,8 @@ void Partida::setProCompu(ProcesaCompuesto* c) {
 string Partida::toString() {
 	return " ";
 }
+
+//void Partida::guardar(ostream& salida)
+//{
+//
+//}

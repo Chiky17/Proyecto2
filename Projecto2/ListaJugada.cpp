@@ -4,12 +4,14 @@ ListaJugada::ListaJugada()
 {
 	primero = NULL;
 	actual = NULL;
+	can = 0;
 }
 void ListaJugada::insertarFinal(Jugada* e) {
 	actual = primero;
 	if (primero == NULL) // la lista esta vacia
 	{
 		primero = new nodoJugada(e, NULL);
+		can++;
 	}
 	else
 	{
@@ -18,7 +20,7 @@ void ListaJugada::insertarFinal(Jugada* e) {
 			actual = actual->getSig();
 		}
 		actual->setSig(new nodoJugada(e, NULL));
-
+		can++;
 	}
 
 }
@@ -115,6 +117,28 @@ ListaJugada::~ListaJugada() {
 	}
 }
 
+void ListaJugada::guardarJugadas(ostream& salida)
+{
+	salida << can << '\n';
+
+	for (int i = 1; i <= can; i++)
+	{
+		obtJugada(i)->guardar(salida);
+		salida << '\n';
+	}
+}
+ListaJugada* ListaJugada::recuperarJugadas(istream& entrada)
+{
+	string _cant;
+	getline(entrada, _cant, '\n');
+	int cant = stoi(_cant);
+	ListaJugada* lista = new ListaJugada;
+
+	for (int i = 1; i <= cant; i++)
+		lista->insertarFinal(Jugada::recuperar(entrada));
+
+	return lista;
+}
 //--------------------------------------------------------------------------------------------------------------------
 
 nodoJugada::nodoJugada(Jugada* e, nodoJugada* s) {
