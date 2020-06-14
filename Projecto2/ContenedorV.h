@@ -4,6 +4,9 @@
 #include<iostream>
 #include<sstream>
 #include"CampoAbstracto.h"
+#include"CampoNuevePuntos.h"
+#include"CampoQuincePuntos.h"
+#include"CampoSeisPuntos.h"
 
 using namespace std;
 

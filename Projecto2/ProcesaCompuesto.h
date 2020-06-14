@@ -17,7 +17,9 @@ public:
 	void pasarInfoDeVecAMat();
 	ContenedorM* getMatriz();
 	void acomodo(int fil, int col);
-
+	//------------------------------------
+	void guardar(ostream& salida);
+	ProcesaCompuesto* recuperar(istream& entrada);
 };
 
 #endif // !PROCESACOMPUESTO_H

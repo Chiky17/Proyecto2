@@ -46,3 +46,44 @@ void ProcesaCompuesto::acomodo(int fil, int col) {
 ContenedorM* ProcesaCompuesto::getMatriz() {
 	return contMat;
 }
+void ProcesaCompuesto::guardar(ostream& salida)
+{
+	if (contVec != NULL) {
+		salida << contVec->getCan() << '\t';
+		for (int i = 0; i < contVec->getCan(); i++)
+		{
+			salida <<contVec->getCampo(i)->getCodigo()  << '\t';
+		}
+		salida << " " << '\n';
+	}
+}
+
+ProcesaCompuesto* ProcesaCompuesto::recuperar(istream& entrada)
+{
+	ContenedorV* vec = new ContenedorV();
+
+	string can,codigo, espacio;
+
+	getline(entrada, can, '\t');
+	int cantidad = stoi(can);
+
+	for (int i = 0; i < cantidad; i++)
+	{
+		getline(entrada, codigo, '\t');
+
+		if (codigo == "seisPuntos") {
+			vec->agregaCampo(new CampoSeisPuntos());
+		}	
+		if (codigo == "nuevePuntos") {
+			vec->agregaCampo(new CampoNuevePuntos());
+		}
+		if (codigo == "quincePuntos") {
+			vec->agregaCampo(new CampoQuincePuntos());
+		}
+	
+	}
+	getline(entrada, espacio, '\n');
+
+	ProcesaCompuesto* com = new ProcesaCompuesto(vec);
+	return com;
+}
