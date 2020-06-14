@@ -6,7 +6,7 @@ EstraPeriferico::EstraPeriferico() {
 EstraPeriferico:: ~EstraPeriferico() {
 
 }
-bool EstraPeriferico::aplicaEstra(ContenedorM* m) {
+bool EstraPeriferico::aplicaEstra(ContenedorM* m,Partida* parti) {
 
 	int ultimo = m->getReciente();
 	int col = m->columnaFinal();
@@ -25,6 +25,10 @@ bool EstraPeriferico::aplicaEstra(ContenedorM* m) {
 				p4->setIzquierda(true);
 				p->setNumPaso(ultimo + 1);
 				p4->setNumPaso(ultimo + 1);
+
+				Jugada* jugadita = new Jugada(0, j, 0, j + 1, 'M');
+				parti->getJugadas()->insertarFinal(jugadita);
+
 				return true;
 			}
 		}
@@ -39,6 +43,10 @@ bool EstraPeriferico::aplicaEstra(ContenedorM* m) {
 				p1->setArriba(true);
 				p->setNumPaso(ultimo + 1);
 				p1->setNumPaso(ultimo + 1);
+
+				Jugada* jugadita = new Jugada(i, col - 1, i + 1, col - 1, 'M');
+				parti->getJugadas()->insertarFinal(jugadita);
+
 				return true;
 			}
 		}
@@ -54,6 +62,10 @@ bool EstraPeriferico::aplicaEstra(ContenedorM* m) {
 				p1->setArriba(true);
 				p->setNumPaso(ultimo + 1);
 				p1->setNumPaso(ultimo + 1);
+
+				Jugada* jugadita = new Jugada(i, 0, i + 1, 0, 'M');
+				parti->getJugadas()->insertarFinal(jugadita);
+
 				return true;
 			}
 		}
@@ -69,6 +81,10 @@ bool EstraPeriferico::aplicaEstra(ContenedorM* m) {
 				p4->setIzquierda(true);
 				p->setNumPaso(ultimo + 1);
 				p4->setNumPaso(ultimo + 1);
+
+				Jugada* jugadita = new Jugada(4, i, 4, i + 1, 'M');
+				parti->getJugadas()->insertarFinal(jugadita);
+
 				return true;
 			}
 		}
@@ -83,6 +99,10 @@ bool EstraPeriferico::aplicaEstra(ContenedorM* m) {
 				p4->setIzquierda(true);
 				p->setNumPaso(ultimo + 1);
 				p4->setNumPaso(ultimo + 1);
+
+				Jugada* jugadita = new Jugada(2, i, 3, i + 1, 'M');
+				parti->getJugadas()->insertarFinal(jugadita);
+
 				return true;
 			}
 		}

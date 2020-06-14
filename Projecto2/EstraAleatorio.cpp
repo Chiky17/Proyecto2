@@ -8,7 +8,7 @@ EstraAleatorio::EstraAleatorio() {
 EstraAleatorio:: ~EstraAleatorio() {
 
 }
-bool EstraAleatorio::aplicaEstra(ContenedorM* m) {
+bool EstraAleatorio::aplicaEstra(ContenedorM* m,Partida* parti) {
 	//hacer metedo para saber si la matriz esta llena que tire una exepcion...
 	//pero afuera del metodo.. o en caso de que sea una matriz nula..
 	int ultimo = m->getReciente();
@@ -27,7 +27,7 @@ bool EstraAleatorio::aplicaEstra(ContenedorM* m) {
 		x = rand() % (5);
 		y = rand() % (col);
 
-		cout << x << "y " << y << endl;
+		//cout << x << "y " << y << endl;
 		//------------------------------------
 		p = m->getPunto(x, y);
 		p1 = m->getPunto(x + 1, y);//abajo
@@ -41,6 +41,10 @@ bool EstraAleatorio::aplicaEstra(ContenedorM* m) {
 				p1->setArriba(true);
 				p->setNumPaso(ultimo + 1);
 				p1->setNumPaso(ultimo + 1);
+
+				Jugada* jugadita = new Jugada(x, y, x + 1, y, 'M');
+				parti->getJugadas()->insertarFinal(jugadita);
+
 				return true;
 			}
 		}
@@ -51,6 +55,10 @@ bool EstraAleatorio::aplicaEstra(ContenedorM* m) {
 				p->setNumPaso(ultimo + 1);
 				p2->setNumPaso(ultimo + 1);
 				flat = true;
+
+				Jugada* jugadita = new Jugada(x, y, x - 1, y, 'M');
+				parti->getJugadas()->insertarFinal(jugadita);
+
 				return true;
 			}
 		}
@@ -60,6 +68,10 @@ bool EstraAleatorio::aplicaEstra(ContenedorM* m) {
 				p3->setDerecha(true);
 				p->setNumPaso(ultimo + 1);
 				p3->setNumPaso(ultimo + 1);
+
+				Jugada* jugadita = new Jugada(x, y, x, y - 1, 'M');
+				parti->getJugadas()->insertarFinal(jugadita);
+
 				return true;
 			}
 		}
@@ -69,6 +81,10 @@ bool EstraAleatorio::aplicaEstra(ContenedorM* m) {
 				p4->setIzquierda(true);
 				p->setNumPaso(ultimo + 1);
 				p4->setNumPaso(ultimo + 1);
+
+				Jugada* jugadita = new Jugada(x, y, x, y + 1, 'M');
+				parti->getJugadas()->insertarFinal(jugadita);
+
 				return true;
 			}
 		}

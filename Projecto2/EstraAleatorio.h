@@ -7,7 +7,7 @@ public:
 	EstraAleatorio();
 	virtual ~EstraAleatorio();
 
-	virtual bool aplicaEstra(ContenedorM*);
+	virtual bool aplicaEstra(ContenedorM*,Partida*);
 
 };
 #endif // !ESTRAALEATORIO_H

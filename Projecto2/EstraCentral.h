@@ -6,7 +6,7 @@ class EstraCentral : public Estrategia {
 public:
 	EstraCentral();
 	virtual ~EstraCentral();
-	virtual bool aplicaEstra(ContenedorM*);
+	virtual bool aplicaEstra(ContenedorM*,Partida*);
 
 };
 #endif // !ESTRACENTRAL_H

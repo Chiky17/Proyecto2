@@ -6,7 +6,7 @@ class EstraCercano : public Estrategia {
 public:
 	EstraCercano();
 	virtual ~EstraCercano();
-	virtual bool aplicaEstra(ContenedorM*);
+	virtual bool aplicaEstra(ContenedorM*,Partida*);
 
 };
 #endif // !ESTRACERCANO_H

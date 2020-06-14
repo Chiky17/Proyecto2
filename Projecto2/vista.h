@@ -6,6 +6,7 @@
 #include"CampoQuincePuntos.h"
 #include"CampoResultante.h"
 #include "Partida.h"
+#include "maquina.h"
 using namespace std;
 class vista
 {
@@ -16,9 +17,11 @@ public:
 	static bool iniciarSesion(empresaDots*);
 	static int modoDeJuego();
 	static ProcesaCompuesto* crearCampo();
-	static Partida* partidaJugadorJugador();
 	static void turnoJugador(char, ContenedorM*, Partida*);
-	//static 
+	static Partida* partidaJugadorJugador();
+	static maquina* crearMaquina();
+	static void turnoMaquina(ContenedorM*, Partida*, maquina*);
+	static Partida* partidaJugadorMaquina();
 	//Empresa - Jugador
 	static int menuEmpresa();
 	static void suscribirJugador(empresaDots*);

@@ -6,7 +6,7 @@ class EstraIslas : public Estrategia {
 public:
 	EstraIslas();
 	virtual ~EstraIslas();
-	virtual bool aplicaEstra(ContenedorM*);
+	virtual bool aplicaEstra(ContenedorM*,Partida*);
 
 };
 

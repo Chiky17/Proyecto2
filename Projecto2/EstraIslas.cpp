@@ -7,7 +7,7 @@ EstraIslas::EstraIslas() {
 EstraIslas:: ~EstraIslas() {
 
 }
-bool EstraIslas::aplicaEstra(ContenedorM* m) {
+bool EstraIslas::aplicaEstra(ContenedorM* m,Partida* parti) {
 	int con = 0;
 	int ultimo = m->getReciente();
 	int col = m->columnaFinal();
@@ -43,8 +43,12 @@ bool EstraIslas::aplicaEstra(ContenedorM* m) {
 			if (p->getAbajo() != true && p1->getArriba() != true) {
 				p->setAbajo(true);
 				p1->setArriba(true);
-				//p->setNumPaso(ultimo + 1);
+				//p->setNumPaso(ultimo + 1);// esta
 				p1->setNumPaso(ultimo + 1);
+
+				Jugada* jugadita = new Jugada(x, y, x + 1, y, 'M');
+				parti->getJugadas()->insertarFinal(jugadita);
+
 				return true;
 			}
 		}
@@ -55,8 +59,12 @@ bool EstraIslas::aplicaEstra(ContenedorM* m) {
 			if (p->getDerecha() != true && p4->getIzquierda() != true) {
 				p->setDerecha(true);
 				p4->setIzquierda(true);
-				//p->setNumPaso(ultimo + 1);
+				///p->setNumPaso(ultimo + 1);//esta
 				p4->setNumPaso(ultimo + 1);
+
+				Jugada* jugadita = new Jugada(x, y, x, y + 1, 'M');
+				parti->getJugadas()->insertarFinal(jugadita);
+
 				return true;
 			}
 		}
@@ -66,8 +74,12 @@ bool EstraIslas::aplicaEstra(ContenedorM* m) {
 			if (p->getArriba() != true && p2->getAbajo() != true) {
 				p->setArriba(true);
 				p2->setAbajo(true);
-				//p->setNumPaso(ultimo + 1);
+				//p->setNumPaso(ultimo + 1);//esta
 				p2->setNumPaso(ultimo + 1);
+
+				Jugada* jugadita = new Jugada(x, y, x - 1, y, 'M');
+				parti->getJugadas()->insertarFinal(jugadita);
+
 				return true;
 			}
 		}
@@ -77,8 +89,12 @@ bool EstraIslas::aplicaEstra(ContenedorM* m) {
 			if (p->getIzquierda() != true && p3->getDerecha() != true) {
 				p->setIzquierda(true);
 				p3->setDerecha(true);
-				//p->setNumPaso(ultimo + 1);
+				//p->setNumPaso(ultimo + 1);//esta
 				p3->setNumPaso(ultimo + 1);
+
+				Jugada* jugadita = new Jugada(x, y, x, y - 1, 'M');
+				parti->getJugadas()->insertarFinal(jugadita);
+
 				return true;
 			}
 		}

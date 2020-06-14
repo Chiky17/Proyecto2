@@ -6,7 +6,7 @@ EstraCentral::EstraCentral() {
 EstraCentral:: ~EstraCentral() {
 
 }
-bool EstraCentral::aplicaEstra(ContenedorM* m) {
+bool EstraCentral::aplicaEstra(ContenedorM* m,Partida* parti) {
 	int ultimo = m->getReciente();
 	int con = 0;
 	int col = m->columnaFinal();
@@ -40,6 +40,10 @@ bool EstraCentral::aplicaEstra(ContenedorM* m) {
 				p1->setArriba(true);
 				p->setNumPaso(ultimo + 1);
 				p1->setNumPaso(ultimo + 1);
+
+				Jugada* jugadita = new Jugada(x, y, x + 1, y, 'M');
+				parti->getJugadas()->insertarFinal(jugadita);
+
 				return true;
 			}
 		}
@@ -50,6 +54,10 @@ bool EstraCentral::aplicaEstra(ContenedorM* m) {
 				p2->setAbajo(true);
 				p->setNumPaso(ultimo + 1);
 				p2->setNumPaso(ultimo + 1);
+
+				Jugada* jugadita = new Jugada(x, y, x - 1, y, 'M');
+				parti->getJugadas()->insertarFinal(jugadita);
+
 				return true;
 			}
 		}
@@ -60,6 +68,10 @@ bool EstraCentral::aplicaEstra(ContenedorM* m) {
 				p3->setDerecha(true);
 				p->setNumPaso(ultimo + 1);
 				p3->setNumPaso(ultimo + 1);
+
+				Jugada* jugadita = new Jugada(x, y, x, y - 1, 'M');
+				parti->getJugadas()->insertarFinal(jugadita);
+
 				return true;
 			}
 		}
@@ -70,6 +82,10 @@ bool EstraCentral::aplicaEstra(ContenedorM* m) {
 				p4->setIzquierda(true);
 				p->setNumPaso(ultimo + 1);
 				p4->setNumPaso(ultimo + 1);
+
+				Jugada* jugadita = new Jugada(x, y, x, y + 1, 'M');
+				parti->getJugadas()->insertarFinal(jugadita);
+
 				return true;
 			}
 		}

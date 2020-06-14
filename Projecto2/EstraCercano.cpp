@@ -6,7 +6,7 @@ EstraCercano::EstraCercano() {
 EstraCercano:: ~EstraCercano() {
 
 }
-bool EstraCercano::aplicaEstra(ContenedorM* m) {
+bool EstraCercano::aplicaEstra(ContenedorM* m,Partida* parti) {
 	//hacer metedo para saber si la matriz esta llena que tire una exepcion...
 	//pero afuera del metodo.. o en caso de que sea una matriz nula..
 	bool flat = false;
@@ -42,6 +42,10 @@ bool EstraCercano::aplicaEstra(ContenedorM* m) {
 			p1->setArriba(true);
 			p->setNumPaso(ultimo + 1);
 			p1->setNumPaso(ultimo + 1);
+
+			Jugada* jugadita = new Jugada(x, y, x + 1, y, 'M');
+			parti->getJugadas()->insertarFinal(jugadita);
+
 			return true;
 		}
 	}
@@ -51,6 +55,10 @@ bool EstraCercano::aplicaEstra(ContenedorM* m) {
 			p2->setAbajo(true);
 			p->setNumPaso(ultimo + 1);
 			p2->setNumPaso(ultimo + 1);
+
+			Jugada* jugadita = new Jugada(x, y, x - 1, y, 'M');
+			parti->getJugadas()->insertarFinal(jugadita);
+
 			return true;
 		}
 	}
@@ -60,6 +68,10 @@ bool EstraCercano::aplicaEstra(ContenedorM* m) {
 			p3->setDerecha(true);
 			p->setNumPaso(ultimo + 1);
 			p3->setNumPaso(ultimo + 1);
+
+			Jugada* jugadita = new Jugada(x, y, x, y - 1, 'M');
+			parti->getJugadas()->insertarFinal(jugadita);
+
 			return true;
 		}
 	}
@@ -69,6 +81,10 @@ bool EstraCercano::aplicaEstra(ContenedorM* m) {
 			p4->setIzquierda(true);
 			p->setNumPaso(ultimo + 1);
 			p4->setNumPaso(ultimo + 1);
+
+			Jugada* jugadita = new Jugada(x, y, x, y + 1, 'M');
+			parti->getJugadas()->insertarFinal(jugadita);
+
 			return true;
 		}
 	}

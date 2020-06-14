@@ -24,4 +24,5 @@ int main()
 	lista = ListaJugada::recuperarJugadas(entrada);
 
 	cout << lista->toString();*/
+	vista::partidaJugadorMaquina();
 }

@@ -6,7 +6,7 @@ class EstraPeriferico : public Estrategia {
 public:
 	EstraPeriferico();
 	virtual ~EstraPeriferico();
-	virtual bool aplicaEstra(ContenedorM*);
+	virtual bool aplicaEstra(ContenedorM*,Partida*);
 
 };
 #endif // !ESTRAPERIFERICO_H

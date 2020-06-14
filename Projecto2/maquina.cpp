@@ -14,7 +14,7 @@ void maquina::setEstrategia(Estrategia* es)
 	estra = es;
 }
 
-void maquina::aplicarEstrategia(ContenedorM* matriz)
+void maquina::aplicarEstrategia(ContenedorM* matriz,Partida* parti)
 {
-	estra->aplicaEstra(matriz);
+	estra->aplicaEstra(matriz,parti);
 }

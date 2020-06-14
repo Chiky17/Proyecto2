@@ -228,6 +228,73 @@ Partida* vista::partidaJugadorJugador()
 	imprimeCadena(matriz->toString(' '));
 	return parti;
 }
+maquina* vista::crearMaquina()
+{
+	int opcion;
+	Estrategia* estra = nullptr;
+	maquina* maqui = new maquina;
+	imprimeCadena("Selecciona la estrategia que seguira la maquina");
+	imprimeCadena("[1] Aleatoria");
+	imprimeCadena("[2] Islas");
+	imprimeCadena("[3] Central");
+	imprimeCadena("[4] Cercana");
+	imprimeCadena("[5] Periferica");
+	imprimSinEndl("Opcion: "); opcion = leerEntero();
+
+	switch (opcion)
+	{
+		case 1: estra = new EstraAleatorio; break;
+		case 2: estra = new EstraIslas; break;
+		case 3: estra = new EstraCentral; break;
+		case 4: estra = new EstraCercano; break;
+		case 5: estra = new EstraPeriferico; break;
+	}
+	if (estra != nullptr)
+	{
+		maqui->setEstrategia(estra);
+		return maqui;
+	}
+	else
+		return nullptr;
+}
+void vista::turnoMaquina(ContenedorM* matriz, Partida* parti, maquina* maqui)
+{
+	maqui->aplicarEstrategia(matriz, parti);
+}
+Partida* vista::partidaJugadorMaquina()
+{
+	Partida* parti = new Partida; // se crea la partida que despues se agregra a juego(controladora) en su lista de partidas
+	ProcesaCompuesto* campo = nullptr;
+	while (campo == nullptr)
+	{
+		campo = crearCampo();
+		Sleep(1000);
+	}
+	parti->setProCompu(campo); // el procesaCompuesto de la partida (su campo)
+	ListaJugada* lista = new ListaJugada; // el registro de las jugadas de las partidas
+	parti->setJugadas(lista);
+	ContenedorM* matriz = parti->getProCompu()->getMatriz();
+	system("cls");
+
+	maquina* maqui = nullptr;
+	while (maqui == nullptr)
+	{
+		maqui = crearMaquina();
+	}
+	int puntosM = 0;
+
+	while (!matriz->estaLlena())
+	{
+		system("cls");
+		turnoMaquina(matriz, parti, maqui);
+		imprimeCadena(matriz->toString('M'));
+		puntosM = matriz->cuentaPuntos('M',matriz->toString('M'));
+		cout << "Puntos: " << puntosM << endl;
+		system("pause");
+	}
+
+	return parti;
+}
 
 int vista::menuEmpresa()
 {
