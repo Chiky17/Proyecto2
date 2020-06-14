@@ -19,7 +19,7 @@ public:
 	void acomodo(int fil, int col);
 	//------------------------------------
 	void guardar(ostream& salida);
-	ProcesaCompuesto* recuperar(istream& entrada);
+	static ProcesaCompuesto* recuperar(istream& entrada);
 };
 
 #endif // !PROCESACOMPUESTO_H

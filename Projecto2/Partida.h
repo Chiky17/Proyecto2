@@ -24,4 +24,5 @@ public:
 	string toString();
 
 	void guardar(ostream&);
+	static Partida* recuperar(istream&);
 };

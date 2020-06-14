@@ -49,12 +49,12 @@ ContenedorM* ProcesaCompuesto::getMatriz() {
 void ProcesaCompuesto::guardar(ostream& salida)
 {
 	if (contVec != NULL) {
-		salida << contVec->getCan() << '\t';
+		salida << contVec->getCan() << '\n';
 		for (int i = 0; i < contVec->getCan(); i++)
 		{
-			salida <<contVec->getCampo(i)->getCodigo()  << '\t';
+			salida <<contVec->getCampo(i)->getCodigo()  << '\n';
 		}
-		salida << " " << '\n';
+		//salida << '\n';
 	}
 }
 
@@ -64,12 +64,12 @@ ProcesaCompuesto* ProcesaCompuesto::recuperar(istream& entrada)
 
 	string can,codigo, espacio;
 
-	getline(entrada, can, '\t');
+	getline(entrada, can, '\n');
 	int cantidad = stoi(can);
 
 	for (int i = 0; i < cantidad; i++)
 	{
-		getline(entrada, codigo, '\t');
+		getline(entrada, codigo, '\n');
 
 		if (codigo == "seisPuntos") {
 			vec->agregaCampo(new CampoSeisPuntos());
@@ -82,7 +82,7 @@ ProcesaCompuesto* ProcesaCompuesto::recuperar(istream& entrada)
 		}
 	
 	}
-	getline(entrada, espacio, '\n');
+	//getline(entrada, espacio, '\n');
 
 	ProcesaCompuesto* com = new ProcesaCompuesto(vec);
 	return com;

@@ -1,6 +1,6 @@
 #pragma once
 #include"Partida.h"
-
+#include <fstream>
 using namespace std;
 class nodoPartida;
 
@@ -22,7 +22,8 @@ public:
 	bool listaVacia();
 	~ListaPartida();
 
-	//void guardarJugadas(ostream&);
+	void guardarPartidas();
+	static ListaPartida* recuperarPartidas();
 };
 
 class nodoPartida

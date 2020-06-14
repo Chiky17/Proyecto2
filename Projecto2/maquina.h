@@ -13,5 +13,5 @@ public:
 	maquina();
 	virtual ~maquina();
 	void setEstrategia(Estrategia*);
-	void aplicarEstrategia(ContenedorM*,Partida*);
+	bool aplicarEstrategia(ContenedorM*,Partida*);
 };

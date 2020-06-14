@@ -223,9 +223,29 @@ Partida* vista::partidaJugadorJugador()
 						imprimeCadena("Ganador Jugador B con " + aux2 + " puntos");
 		imprimeCadena("<Enter>");
 		esperandoEnter();
+		return parti;
 	}
 	system("cls");
 	imprimeCadena(matriz->toString(' '));
+	imprimeCadena("\nPartida terminada...");
+	string aux1 = enteroAstring(puntosA);
+	string aux2 = enteroAstring(puntosB);
+	if (puntosA > puntosB)
+		if (puntosA == 1)
+			imprimeCadena("Ganador Jugador A con " + aux1 + " punto");
+		else
+			imprimeCadena("Ganador Jugador A con " + aux1 + " puntos");
+	else
+		if (puntosA == puntosB)
+			imprimeCadena("El juego termino en empate, con ambos jugadores con " + aux1 + " puntos");
+		else
+			if (puntosB > puntosA)
+				if (puntosB == 1)
+					imprimeCadena("Ganador Jugador B con " + aux2 + " punto");
+				else
+					imprimeCadena("Ganador Jugador B con " + aux2 + " puntos");
+	imprimeCadena("<Enter>");
+	esperandoEnter();
 	return parti;
 }
 maquina* vista::crearMaquina()
@@ -259,7 +279,9 @@ maquina* vista::crearMaquina()
 }
 void vista::turnoMaquina(ContenedorM* matriz, Partida* parti, maquina* maqui)
 {
-	maqui->aplicarEstrategia(matriz, parti);
+	EstraAleatorio* aux = new EstraAleatorio; // si no se puede hacer la estrtegia, se hace un turno de aleatoria
+	if (!maqui->aplicarEstrategia(matriz, parti))
+		aux->aplicaEstra(matriz, parti);
 }
 Partida* vista::partidaJugadorMaquina()
 {
@@ -274,6 +296,7 @@ Partida* vista::partidaJugadorMaquina()
 	ListaJugada* lista = new ListaJugada; // el registro de las jugadas de las partidas
 	parti->setJugadas(lista);
 	ContenedorM* matriz = parti->getProCompu()->getMatriz();
+	int cont = 1;
 	system("cls");
 
 	maquina* maqui = nullptr;
@@ -281,18 +304,97 @@ Partida* vista::partidaJugadorMaquina()
 	{
 		maqui = crearMaquina();
 	}
-	int puntosM = 0;
+	int puntosM = 0, puntosA = 0; char jugadorA = 'A';
 
-	while (!matriz->estaLlena())
+	try
+	{
+		while (!matriz->estaLlena())
+		{
+			system("cls");
+
+			if (cont % 2 != 0)
+			{
+				puntosA = matriz->cuentaPuntos(jugadorA, matriz->toString(' '));
+				imprimeCadena(matriz->toString(jugadorA));
+				turnoJugador(jugadorA, matriz, parti);
+				while (!matriz->estaLlena() && puntosA < matriz->cuentaPuntos(jugadorA, matriz->toString(' ')))
+				{
+					system("cls");
+					puntosA = matriz->cuentaPuntos(jugadorA, matriz->toString(' '));
+					imprimeCadena(matriz->toString('A'));
+					turnoJugador(jugadorA, matriz, parti);
+				}
+				if (!matriz->estaLlena())
+					cont++;
+			}
+			else
+				if (cont % 2 == 0)
+				{
+					puntosM = matriz->cuentaPuntos('M', matriz->toString(' '));
+					turnoMaquina(matriz, parti, maqui);
+					imprimeCadena(matriz->toString('M'));
+					imprimeCadena("Turno de la maquina");
+					system("pause");
+					while (!matriz->estaLlena() && puntosM < matriz->cuentaPuntos('M', matriz->toString(' ')))
+					{
+						system("cls");
+						puntosM = matriz->cuentaPuntos('M', matriz->toString(' '));
+						turnoMaquina(matriz, parti, maqui);
+						imprimeCadena(matriz->toString('M'));
+						imprimeCadena("Turno de la maquina");
+						system("pause");
+					}
+					if (!matriz->estaLlena())
+						cont++;
+				}
+		}
+	}
+	catch (int)
 	{
 		system("cls");
-		turnoMaquina(matriz, parti, maqui);
-		imprimeCadena(matriz->toString('M'));
-		puntosM = matriz->cuentaPuntos('M',matriz->toString('M'));
-		cout << "Puntos: " << puntosM << endl;
-		system("pause");
+		imprimeCadena(matriz->toString(' '));
+		imprimeCadena("\nPartida terminada...");
+		string aux1 = enteroAstring(puntosA);
+		string aux2 = enteroAstring(puntosM);
+		if (puntosA > puntosM)
+			if (puntosA == 1)
+				imprimeCadena("Ganador Jugador A con " + aux1 + " punto");
+			else
+				imprimeCadena("Ganador Jugador A con " + aux1 + " puntos");
+		else
+			if (puntosA == puntosM)
+				imprimeCadena("El juego termino en empate, con ambos jugadores con " + aux1 + " puntos");
+			else
+				if (puntosM > puntosA)
+					if (puntosM == 1)
+						imprimeCadena("Ganadora la maquina con " + aux2 + " punto");
+					else
+						imprimeCadena("Ganadora la maquina con " + aux2 + " puntos");
+		imprimeCadena("<Enter>");
+		esperandoEnter();
+		return parti;
 	}
-
+	system("cls");
+	imprimeCadena(matriz->toString(' '));
+	imprimeCadena("\nPartida terminada...");
+	string aux1 = enteroAstring(puntosA);
+	string aux2 = enteroAstring(puntosM);
+	if (puntosA > puntosM)
+		if (puntosA == 1)
+			imprimeCadena("Ganador Jugador A con " + aux1 + " punto");
+		else
+			imprimeCadena("Ganador Jugador A con " + aux1 + " puntos");
+	else
+		if (puntosA == puntosM)
+			imprimeCadena("El juego termino en empate, con ambos jugadores con " + aux1 + " puntos");
+		else
+			if (puntosM > puntosA)
+				if (puntosM == 1)
+					imprimeCadena("Ganadora la maquina B con " + aux2 + " punto");
+				else
+					imprimeCadena("Ganadora la maquina con " + aux2 + " puntos");
+	imprimeCadena("<Enter>");
+	esperandoEnter();
 	return parti;
 }
 

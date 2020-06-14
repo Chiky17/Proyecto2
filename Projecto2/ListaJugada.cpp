@@ -130,6 +130,8 @@ void ListaJugada::guardarJugadas(ostream& salida)
 ListaJugada* ListaJugada::recuperarJugadas(istream& entrada)
 {
 	string _cant;
+	//string kk;
+	//getline(entrada, kk, '\n');
 	getline(entrada, _cant, '\n');
 	int cant = stoi(_cant);
 	ListaJugada* lista = new ListaJugada;

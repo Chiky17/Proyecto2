@@ -123,23 +123,46 @@ bool ListaPartida::eliminaFinal() {
 		return true;
 	}
 }
-
-
 ListaPartida::~ListaPartida() {
 	while (!listaVacia())
 	{
 		eliminaFinal();
 	}
 }
-//
-//void ListaPartida::guardarJugadas(ostream& salida)
-//{
-//	salida << can << '\n';
-//
-//	for(int i = 1; i <= can; i++)
-//		obtPartida(i)->
-//
-//}
+
+void ListaPartida::guardarPartidas()
+{
+	string archivo = "../Partidas.txt";
+	ofstream salida(archivo.c_str(), ios::trunc);
+
+	salida << cuentaNodos() << '\n';
+	for (int i = cuentaNodos(); i >= 1; i--)
+	{
+		obtPartida(i)->guardar(salida);
+		//salida << '\n';
+	}
+
+	salida.close();
+}
+
+ListaPartida* ListaPartida::recuperarPartidas()
+{
+	string archivo = "../Partidas.txt";
+	ifstream entrada(archivo.c_str());
+	string _can;
+	ListaPartida* lista = new ListaPartida();
+
+	getline(entrada, _can, '\n');
+	int can = stoi(_can);
+
+	for (int i = 1; i <= can; i++)
+	{
+		lista->insertarFinal(Partida::recuperar(entrada));
+	}
+	return lista;
+
+	entrada.close();
+}
 //--------------------------------------------------------------------------------------------------------------------
 
 nodoPartida::nodoPartida(Partida* e, nodoPartida* s) {

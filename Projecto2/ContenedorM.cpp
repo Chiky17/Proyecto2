@@ -162,6 +162,7 @@ bool ContenedorM::estaLlena()
 					}
 					if (j == 0 && i != 0)
 					{
+						if(i+1 <5)
 						if (m[i + 1][j]->getDesactivado())
 						{
 							if (!m[i][j]->getDerecha() || !m[i][j]->getArriba())

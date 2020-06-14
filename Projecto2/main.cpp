@@ -1,28 +1,45 @@
 #include "controladora.h"
 #include <fstream>
+#include "arbitro.h"
+#include "ListaPartida.h"
 int main()
 {
 	//controladora con;
 	//con.controlMenuEmpresa();
 
-	//vista::partidaJugadorJugador();
-	/*ListaJugada* lista = new ListaJugada;
-	Jugada* ju = new Jugada(1, 2, 3, 2, 'n');
-	Jugada* ju1 = new Jugada(2, 2, 3, 2, 'n');
-	Jugada* ju2 = new Jugada(3, 2, 3, 2, 'n');
-	Jugada* ju3 = new Jugada(99, 4, 3, 2, 'n');
-	lista->insertarFinal(ju);
-	lista->insertarFinal(ju1);
-	lista->insertarFinal(ju2);
-	lista->insertarFinal(ju3);
-	string archivo = "../Jugadas.txt";
-	ofstream salida(archivo.c_str(), ios::trunc);
+	/*ListaPartida* partidas = new ListaPartida;
+	partidas = ListaPartida::recuperarPartidas();*/
 
-	lista->guardarJugadas(salida);
-	string archivo = "../Jugadas.txt";
-	ifstream entrada(archivo.c_str());
-	lista = ListaJugada::recuperarJugadas(entrada);
 
-	cout << lista->toString();*/
+	/*Partida* partidita = vista::partidaJugadorMaquina();
+	system("cls");
+	Partida* partidita1 = vista::partidaJugadorMaquina();
+	partidas->insertarFinal(partidita);
+	partidas->insertarFinal(partidita1);
+
+	partidas->guardarPartidas();*/
+
+
+
+
+	//// repeticion de todas
+	//int j = 0;
+	//Jugada* jugadita;
+	//ContenedorM* matriz;
+	//for (int i = 1; i <= partidas->cuentaNodos(); i++)
+	//{
+	//	j = partidas->obtPartida(i)->getJugadas()->cuentaNodos();
+	//	matriz = partidas->obtPartida(i)->getProCompu()->getMatriz();
+	//	for (int k = 1; k <= j; k++)
+	//	{
+	//		jugadita = partidas->obtPartida(i)->getJugadas()->obtJugada(k);
+	//		arbitro::dirrecionJugada(jugadita->getposX1(), jugadita->getposY1(), jugadita->getposX2(), jugadita->getposY2(), matriz);
+	//		cout << "\n" << matriz->toString('M');
+	//		system("cls");
+	//	}
+	//	system("pause");
+	//}
+
 	vista::partidaJugadorMaquina();
 }
+

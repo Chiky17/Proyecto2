@@ -22,3 +22,21 @@ void Partida::setProCompu(ProcesaCompuesto* c) {
 string Partida::toString() {
 	return " ";
 }
+
+void Partida::guardar(ostream& entrada)
+{
+	proCompu->guardar(entrada);
+	jugadas->guardarJugadas(entrada);
+}
+Partida* Partida::recuperar(istream& salida)
+{
+	Partida* parti = new Partida;
+
+	ProcesaCompuesto* procesa = ProcesaCompuesto::recuperar(salida);
+	ListaJugada* jugaditas = ListaJugada::recuperarJugadas(salida);
+
+	parti->setProCompu(procesa);
+	parti->setJugadas(jugaditas);
+
+	return parti;
+}
