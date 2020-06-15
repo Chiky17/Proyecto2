@@ -20,7 +20,7 @@ void controladora::control1()
 		system("pause");
 	} while (opcion != 3);
 
-	
+	_juego->guardarPartidas();
 
 }
 int controladora::control2()
