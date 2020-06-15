@@ -46,6 +46,10 @@ void ProcesaCompuesto::acomodo(int fil, int col) {
 ContenedorM* ProcesaCompuesto::getMatriz() {
 	return contMat;
 }
+ContenedorV* ProcesaCompuesto::getVector()
+{
+	return contVec;
+}
 void ProcesaCompuesto::guardar(ostream& salida)
 {
 	if (contVec != NULL) {
