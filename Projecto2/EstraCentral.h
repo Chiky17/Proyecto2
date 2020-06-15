@@ -7,6 +7,6 @@ public:
 	EstraCentral();
 	virtual ~EstraCentral();
 	virtual bool aplicaEstra(ContenedorM*,Partida*);
-
+	virtual string getNombreEstra();
 };
 #endif // !ESTRACENTRAL_H

@@ -7,6 +7,6 @@ public:
 	EstraCercano();
 	virtual ~EstraCercano();
 	virtual bool aplicaEstra(ContenedorM*,Partida*);
-
+	virtual string getNombreEstra();
 };
 #endif // !ESTRACERCANO_H

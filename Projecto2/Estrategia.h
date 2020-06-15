@@ -7,6 +7,7 @@ using namespace std;
 class Estrategia { //Interfaz... <<Abstract>>
 public:
 	virtual bool aplicaEstra(ContenedorM*,Partida*) = 0;
+	virtual string getNombreEstra() = 0;
 
 };
 

@@ -19,6 +19,7 @@ public:
 	static int modoDeJuego();
 	static ProcesaCompuesto* crearCampo();
 	static void turnoJugador(char, ContenedorM*, Partida*);
+	static void turnoJugadorCercano(char, ContenedorM*, Partida*);//para estrategia cercana
 	static Partida* partidaJugadorJugador();
 	static maquina* crearMaquina();
 	static void turnoMaquina(ContenedorM*, Partida*, maquina*);
