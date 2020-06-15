@@ -1,13 +1,4 @@
 2
-3
-seisPuntos
-seisPuntos
-seisPuntos
-4
-1	1	1	2	A
-0	0	0	1	M
-1	2	1	3	A
-0	1	0	2	M
 2
 seisPuntos
 nuevePuntos
@@ -34,3 +25,12 @@ nuevePuntos
 1	2	1	3	A
 0	3	0	4	A
 1	3	1	4	M
+3
+seisPuntos
+seisPuntos
+seisPuntos
+4
+1	1	1	2	A
+0	0	0	1	M
+1	2	1	3	A
+0	1	0	2	M
