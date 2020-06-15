@@ -7,6 +7,8 @@ int vista::menuGeneral()
 	int opcion;
 
 	system("cls");
+	imprimeCadena("*** Juego Dots ***\n ");
+	imprimeCadena("-> Menu principal:");
 	imprimeCadena("[1] Juego");
 	imprimeCadena("[2] Menu empresa");
 	imprimeCadena("[3] Salir");
@@ -22,6 +24,7 @@ void vista::menuJuego(ListaPartida* partidas,empresaDots* empresa)
 	do
 	{
 		system("cls");
+		imprimeCadena("-> Menu del Juego:");
 		imprimeCadena("[1] Jugar");
 		imprimeCadena("[2] Ver repeticion");
 		imprimeCadena("[3] Volver");
