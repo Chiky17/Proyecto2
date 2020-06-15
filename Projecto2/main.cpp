@@ -7,9 +7,11 @@ int main()
 	//controladora con;
 	//con.controlMenuEmpresa();
 
-	/*ListaPartida* partidas = new ListaPartida;
-	partidas = ListaPartida::recuperarPartidas();*/
+	ListaPartida* partidas = new ListaPartida;
+	partidas = ListaPartida::recuperarPartidas();
 
+
+	vista::verRepeticion(partidas);
 
 	/*Partida* partidita = vista::partidaJugadorMaquina();
 	system("cls");
@@ -40,6 +42,6 @@ int main()
 	//	system("pause");
 	//}
 
-	vista::partidaJugadorMaquina();
+	//vista::partidaJugadorMaquina();
 }
 

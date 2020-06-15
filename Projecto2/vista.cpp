@@ -181,7 +181,7 @@ Partida* vista::partidaJugadorJugador()
 				if (!matriz->estaLlena())
 					cont++;
 			}
-
+			else
 			if (cont % 2 == 0)
 			{
 				system("cls");
@@ -199,10 +199,14 @@ Partida* vista::partidaJugadorJugador()
 					cont++;
 			}
 		}
+		puntosB = matriz->cuentaPuntos(jugadorB, matriz->toString(' '));
+		puntosA = matriz->cuentaPuntos(jugadorA, matriz->toString(' '));
 	}
 	catch (int)
 	{
 		system("cls");
+		puntosB = matriz->cuentaPuntos(jugadorB, matriz->toString(' '));
+		puntosA = matriz->cuentaPuntos(jugadorA, matriz->toString(' '));
 		imprimeCadena(matriz->toString(' '));
 		imprimeCadena("\nPartida terminada...");
 		string aux1 = enteroAstring(puntosA);
@@ -348,10 +352,14 @@ Partida* vista::partidaJugadorMaquina()
 						cont++;
 				}
 		}
+		puntosM = matriz->cuentaPuntos('M', matriz->toString(' '));
+		puntosA = matriz->cuentaPuntos(jugadorA, matriz->toString(' '));
 	}
 	catch (int)
 	{
 		system("cls");
+		puntosM = matriz->cuentaPuntos('M', matriz->toString(' '));
+		puntosA = matriz->cuentaPuntos(jugadorA, matriz->toString(' '));
 		imprimeCadena(matriz->toString(' '));
 		imprimeCadena("\nPartida terminada...");
 		string aux1 = enteroAstring(puntosA);
@@ -397,7 +405,40 @@ Partida* vista::partidaJugadorMaquina()
 	esperandoEnter();
 	return parti;
 }
+int vista::elegirRepeticion(ListaPartida* partidas)
+{
+	int opcion = 0, numPartidas = partidas->cuentaNodos();
 
+	while (opcion < 1 || opcion > numPartidas)
+	{
+		imprimeCadena(partidas->toString());
+		imprimeCadena("Digite el numero de la partida: "); opcion = leerEntero();
+	}
+	return opcion;
+}
+void vista::verRepeticion(ListaPartida* partidas)
+{
+	int pos = elegirRepeticion(partidas);
+	Jugada* jugadita;
+	ContenedorM* matriz;
+	string nombre;
+	int j = partidas->obtPartida(pos)->getJugadas()->cuentaNodos();
+	matriz = partidas->obtPartida(pos)->getProCompu()->getMatriz();
+
+	for (int k = 1; k <= j; k++)
+	{
+		system("cls");
+		jugadita = partidas->obtPartida(pos)->getJugadas()->obtJugada(k);
+		arbitro::dirrecionJugada(jugadita->getposX1(), jugadita->getposY1(), jugadita->getposX2(), jugadita->getposY2(), matriz);
+		nombre = charAstring(jugadita->getNombre());
+		if (nombre == "B" || nombre == "A")
+			imprimeCadena("Turno de jugador " + nombre);
+		else
+			imprimeCadena("Turno de la maquina");
+		imprimeCadena(matriz->toString(jugadita->getNombre()));
+		system("pause");
+	}
+}
 int vista::menuEmpresa()
 {
 	int opcion;
