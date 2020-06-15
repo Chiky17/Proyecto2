@@ -117,7 +117,7 @@ ProcesaCompuesto* vista::crearCampo()
 		return nullptr;
 	}
 }
-void vista::turnoJugador(char nom, ContenedorM* matriz,Partida* parti)
+void vista::turnoJugadorCercano(char nom, ContenedorM* matriz,Partida* parti)
 {
 	int x1, y1, x2, y2;
 	string aux = charAstring(nom);
@@ -131,6 +131,36 @@ void vista::turnoJugador(char nom, ContenedorM* matriz,Partida* parti)
 	imprimSinEndl("Columna: "); y2 = leerEntero();
 
 	while (!arbitro::dirrecionJugada(x1, y1, x2, y2,matriz))
+	{
+		imprimeCadena("Jugada Invalida, vuelva a intentarlo");
+		imprimSinEndl("Fila: "); x1 = leerEntero();
+		imprimSinEndl("Columna: "); y1 = leerEntero();
+		imprimeCadena("Se conecta con: ");
+		imprimSinEndl("Fila: "); x2 = leerEntero();
+		imprimSinEndl("Columna: "); y2 = leerEntero();
+	}
+	Jugada* jugadita = new Jugada(x1, y1, x2, y2, nom);
+	parti->getJugadas()->insertarFinal(jugadita);
+	int con = matriz->getReciente();
+	matriz->getPunto(x1, y1)->setNumPaso(con++);
+	matriz->getPunto(x2, y2)->setNumPaso(con++);
+	matriz->toString(nom);
+}
+
+void vista::turnoJugador(char nom, ContenedorM* matriz, Partida* parti)
+{
+	int x1, y1, x2, y2;
+	string aux = charAstring(nom);
+	imprimeCadena(" -> Ingrese lo solicitado \n (En caso de querer terminar la partida ingrese el numero 911 en fila...)\n");
+	imprimeCadena("Jugador " + aux);
+	imprimSinEndl("Fila: "); x1 = leerEntero();
+	if (x1 == 911) { throw 911; }
+	imprimSinEndl("Columna: "); y1 = leerEntero();
+	imprimeCadena("Se conecta con: ");
+	imprimSinEndl("Fila: "); x2 = leerEntero();
+	imprimSinEndl("Columna: "); y2 = leerEntero();
+
+	while (!arbitro::dirrecionJugada(x1, y1, x2, y2, matriz))
 	{
 		imprimeCadena("Jugada Invalida, vuelva a intentarlo");
 		imprimSinEndl("Fila: "); x1 = leerEntero();
@@ -314,18 +344,36 @@ Partida* vista::partidaJugadorMaquina()
 
 			if (cont % 2 != 0)
 			{
-				puntosA = matriz->cuentaPuntos(jugadorA, matriz->toString(' '));
-				imprimeCadena(matriz->toString(jugadorA));
-				turnoJugador(jugadorA, matriz, parti);
-				while (!matriz->estaLlena() && puntosA < matriz->cuentaPuntos(jugadorA, matriz->toString(' ')))
-				{
-					system("cls");
+				if (maqui->getNombre() == "EstraCercano") {//si se juega con la estrategia cercano
+
 					puntosA = matriz->cuentaPuntos(jugadorA, matriz->toString(' '));
-					imprimeCadena(matriz->toString('A'));
-					turnoJugador(jugadorA, matriz, parti);
+					imprimeCadena(matriz->toString(jugadorA));
+					turnoJugadorCercano(jugadorA, matriz, parti);
+					while (!matriz->estaLlena() && puntosA < matriz->cuentaPuntos(jugadorA, matriz->toString(' ')))
+					{
+						system("cls");
+						puntosA = matriz->cuentaPuntos(jugadorA, matriz->toString(' '));
+						imprimeCadena(matriz->toString('A'));
+						turnoJugadorCercano(jugadorA, matriz, parti);
+					}
+					if (!matriz->estaLlena())
+						cont++;
 				}
-				if (!matriz->estaLlena())
-					cont++;
+				else {
+
+					puntosA = matriz->cuentaPuntos(jugadorA, matriz->toString(' '));
+					imprimeCadena(matriz->toString(jugadorA));
+					turnoJugador(jugadorA, matriz, parti);
+					while (!matriz->estaLlena() && puntosA < matriz->cuentaPuntos(jugadorA, matriz->toString(' ')))
+					{
+						system("cls");
+						puntosA = matriz->cuentaPuntos(jugadorA, matriz->toString(' '));
+						imprimeCadena(matriz->toString('A'));
+						turnoJugador(jugadorA, matriz, parti);
+					}
+					if (!matriz->estaLlena())
+						cont++;
+				}
 			}
 			else
 				if (cont % 2 == 0)
@@ -334,7 +382,8 @@ Partida* vista::partidaJugadorMaquina()
 					turnoMaquina(matriz, parti, maqui);
 					imprimeCadena(matriz->toString('M'));
 					imprimeCadena("Turno de la maquina");
-					system("pause");
+					imprimeCadena("<enter>");
+					esperandoEnter();
 					while (!matriz->estaLlena() && puntosM < matriz->cuentaPuntos('M', matriz->toString(' ')))
 					{
 						system("cls");
@@ -342,7 +391,8 @@ Partida* vista::partidaJugadorMaquina()
 						turnoMaquina(matriz, parti, maqui);
 						imprimeCadena(matriz->toString('M'));
 						imprimeCadena("Turno de la maquina");
-						system("pause");
+						imprimeCadena("<enter>");
+						esperandoEnter();
 					}
 					if (!matriz->estaLlena())
 						cont++;

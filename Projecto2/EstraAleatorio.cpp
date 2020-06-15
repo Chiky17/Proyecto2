@@ -8,6 +8,9 @@ EstraAleatorio::EstraAleatorio() {
 EstraAleatorio:: ~EstraAleatorio() {
 
 }
+string EstraAleatorio::getNombreEstra() {
+	return "EstraAleatorio";
+}
 bool EstraAleatorio::aplicaEstra(ContenedorM* m,Partida* parti) {
 	//hacer metedo para saber si la matriz esta llena que tire una exepcion...
 	//pero afuera del metodo.. o en caso de que sea una matriz nula..

@@ -7,7 +7,7 @@ public:
 	EstraIslas();
 	virtual ~EstraIslas();
 	virtual bool aplicaEstra(ContenedorM*,Partida*);
-
+	virtual string getNombreEstra();
 };
 
 #endif // !ESTRAISLAS_H

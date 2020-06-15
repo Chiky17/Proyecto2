@@ -7,6 +7,9 @@ EstraIslas::EstraIslas() {
 EstraIslas:: ~EstraIslas() {
 
 }
+string EstraIslas::getNombreEstra() {
+	return "EstraIslas";
+}
 bool EstraIslas::aplicaEstra(ContenedorM* m,Partida* parti) {
 	int con = 0;
 	int ultimo = m->getReciente();

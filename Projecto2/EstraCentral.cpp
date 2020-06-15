@@ -6,6 +6,9 @@ EstraCentral::EstraCentral() {
 EstraCentral:: ~EstraCentral() {
 
 }
+string EstraCentral::getNombreEstra() {
+	return "EstraCentral";
+}
 bool EstraCentral::aplicaEstra(ContenedorM* m,Partida* parti) {
 	int ultimo = m->getReciente();
 	int con = 0;

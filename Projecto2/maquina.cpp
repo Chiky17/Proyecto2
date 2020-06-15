@@ -9,6 +9,9 @@ maquina::~maquina()
 {
 }
 
+string maquina::getNombre() {
+	return estra->getNombreEstra();
+}
 void maquina::setEstrategia(Estrategia* es)
 {
 	estra = es;

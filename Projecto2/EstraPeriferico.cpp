@@ -6,6 +6,9 @@ EstraPeriferico::EstraPeriferico() {
 EstraPeriferico:: ~EstraPeriferico() {
 
 }
+string EstraPeriferico::getNombreEstra() {
+	return "EstraPeriferico";
+}
 bool EstraPeriferico::aplicaEstra(ContenedorM* m,Partida* parti) {
 
 	int ultimo = m->getReciente();

@@ -12,6 +12,7 @@ private:
 public:
 	maquina();
 	virtual ~maquina();
+	string getNombre();
 	void setEstrategia(Estrategia*);
 	bool aplicarEstrategia(ContenedorM*,Partida*);
 };

@@ -6,6 +6,9 @@ EstraCercano::EstraCercano() {
 EstraCercano:: ~EstraCercano() {
 
 }
+string EstraCercano::getNombreEstra() {
+	return "EstraCercano";
+}
 bool EstraCercano::aplicaEstra(ContenedorM* m,Partida* parti) {
 	//hacer metedo para saber si la matriz esta llena que tire una exepcion...
 	//pero afuera del metodo.. o en caso de que sea una matriz nula..

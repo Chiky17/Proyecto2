@@ -7,6 +7,6 @@ public:
 	EstraPeriferico();
 	virtual ~EstraPeriferico();
 	virtual bool aplicaEstra(ContenedorM*,Partida*);
-
+	virtual string getNombreEstra();
 };
 #endif // !ESTRAPERIFERICO_H
