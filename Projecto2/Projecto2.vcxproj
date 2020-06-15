@@ -153,6 +153,7 @@
     <ClCompile Include="EstraCercano.cpp" />
     <ClCompile Include="EstraIslas.cpp" />
     <ClCompile Include="EstraPeriferico.cpp" />
+    <ClCompile Include="juego.cpp" />
     <ClCompile Include="Jugada.cpp" />
     <ClCompile Include="jugador.cpp" />
     <ClCompile Include="ListaJugada.cpp" />
@@ -182,6 +183,7 @@
     <ClInclude Include="EstraIslas.h" />
     <ClInclude Include="EstraPeriferico.h" />
     <ClInclude Include="Estrategia.h" />
+    <ClInclude Include="juego.h" />
     <ClInclude Include="Jugada.h" />
     <ClInclude Include="jugador.h" />
     <ClInclude Include="ListaJugada.h" />

@@ -16,18 +16,53 @@ int vista::menuGeneral()
 	return opcion;
 }
 
-int vista::menuJuego()
+void vista::menuJuego(ListaPartida* partidas,empresaDots* empresa)
 {
 	int opcion;
+	do
+	{
+		system("cls");
+		imprimeCadena("[1] Jugar");
+		imprimeCadena("[2] Ver repeticion");
+		imprimeCadena("[3] Volver");
+		imprimSinEndl("Opcion: ");
+		opcion = leerEntero();
+		system("cls");
+		switch (opcion)
+		{
+			case 1:
+			{
+				if (iniciarSesion(empresa))
+				{
+					int modo = modoDeJuego();
+					while (modo < 1 || modo > 2)
+					{
+						imprimeCadena("Opcion fuera de parametros");
+						system("pause");
+						modo = modoDeJuego();
+					}
+					switch (modo)
+					{
+					case 1:
+						partidas->insertarFinal(partidaJugadorJugador()); break;
+					case 2:
+						partidas->insertarFinal(partidaJugadorMaquina()); break;
+					default: imprimeCadena("Opcion no valida");
+					}
 
-	system("cls");
-	imprimeCadena("[1] Jugar");
-	imprimeCadena("[2] Ver repeticion");
-	imprimeCadena("[3] Volver");
-	imprimSinEndl("Opcion: ");
-	opcion = leerEntero();
-	system("cls");
-	return opcion;
+				}
+				else
+					imprimeCadena("Cedula o codigo son incorrectos");
+				system("pause");
+			}break;
+			case 2:
+			{
+				verRepeticion(partidas);
+			}break;
+			case 3: imprimeCadena("Volviendo"); break;
+		default: imprimeCadena("Opcion no valida");
+		}
+	} while (opcion != 3);
 }
 bool vista::iniciarSesion(empresaDots* empresa) // false si el codigo o id son incorrectos   - Aqui se entra si elige jugar
 {
@@ -461,6 +496,7 @@ int vista::elegirRepeticion(ListaPartida* partidas)
 
 	while (opcion < 1 || opcion > numPartidas)
 	{
+		system("cls");
 		imprimeCadena(partidas->toString());
 		imprimeCadena("Digite el numero de la partida: "); opcion = leerEntero();
 	}
@@ -489,20 +525,35 @@ void vista::verRepeticion(ListaPartida* partidas)
 		system("pause");
 	}
 }
-int vista::menuEmpresa()
+void vista::menuEmpresa(empresaDots* empresa)
 {
 	int opcion;
+	do
+	{
+		system("cls");
+		imprimeCadena("[1] Suscribir Jugador");
+		imprimeCadena("[2] Codigo actual");
+		imprimeCadena("[3] Jugadores suscritos");
+		imprimeCadena("[4] Simular cambio de dia");
+		imprimeCadena("[5] Salir");
+		imprimSinEndl("Opcion: ");
+		opcion = leerEntero();
+		system("cls");
+		switch (opcion)
+		{
+			case 1:
+				suscribirJugador(empresa); break;
+			case 2:
+				codigoActual(empresa); break;
+			case 3:
+				jugadoresSuscritos(empresa); break;
+			case 4:
+				simulacionCambioDia(empresa); break;
+			case 5: imprimeCadena("Volviendo"); break;
 
-	system("cls");
-	imprimeCadena("[1] Suscribir Jugador");
-	imprimeCadena("[2] Codigo actual");
-	imprimeCadena("[3] Jugadores suscritos");
-	imprimeCadena("[4] Simular cambio de dia");
-	imprimeCadena("[5] Salir");
-	imprimSinEndl("Opcion: ");
-	opcion = leerEntero();
-	system("cls");
-	return opcion;
+		default: imprimeCadena("Opcion no valida");
+		}
+	} while (opcion != 5);
 }
 void vista::suscribirJugador(empresaDots* empresa)
 {
@@ -515,6 +566,7 @@ void vista::suscribirJugador(empresaDots* empresa)
 		jugador* jugaAux = new jugador(nom, id, empresa);
 		system("cls");
 		imprimeCadena("\tJugador suscrito correctamente\n\n");
+		return;
 	}
 	else
 	{
@@ -550,4 +602,9 @@ void vista::simulacionCambioDia(empresaDots* empresa)
 	empresa->cambioDeDia();
 	imprimeCadena( "El codigo ha cambiado\nLos jugadores suscritos han sido borrados para comenzar el dia\n\n");
 	system("pause");
+}
+
+void vista::error()
+{
+	imprimeCadena("Opcion no valida");
 }

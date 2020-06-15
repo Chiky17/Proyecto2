@@ -4,14 +4,15 @@
 #include "ListaPartida.h"
 int main()
 {
-	//controladora con;
+	controladora con;
+	con.control1();
 	//con.controlMenuEmpresa();
 
-	ListaPartida* partidas = new ListaPartida;
-	partidas = ListaPartida::recuperarPartidas();
+	//ListaPartida* partidas = new ListaPartida;
+//	partidas = ListaPartida::recuperarPartidas();
 
 
-	vista::verRepeticion(partidas);
+//	vista::verRepeticion(partidas);
 
 	/*Partida* partidita = vista::partidaJugadorMaquina();
 	system("cls");
@@ -42,6 +43,7 @@ int main()
 	//	system("pause");
 	//}
 
-	//vista::partidaJugadorMaquina();
+	/*partidas->insertarFinal(vista::partidaJugadorMaquina());
+	partidas->guardarPartidas();*/
 }
 

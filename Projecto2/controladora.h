@@ -1,20 +1,19 @@
 #pragma once
 #include "vista.h"
+#include "juego.h"
+
 
 class controladora
 {
 private:
-	empresaDots* empresa;
+	juego* _juego;
 public:
 	controladora();
 	virtual ~controladora();
 
 	
 	//Controles temporales para empresa - jugador
-	void controlMenuEmpresa();
-	void controlSuscribirJugador();
-	void controlCodigo();
-	void controlJugadoresSuscritos();
-	void controlCambioDia();
+	void control1();
+	int control2();
 
 };

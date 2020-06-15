@@ -14,7 +14,9 @@ class vista
 public:
 	static int menuGeneral();
 	// Jugar
-	static int menuJuego();
+
+	static void menuJuego(ListaPartida*, empresaDots*);
+
 	static bool iniciarSesion(empresaDots*);
 	static int modoDeJuego();
 	static ProcesaCompuesto* crearCampo();
@@ -24,13 +26,18 @@ public:
 	static maquina* crearMaquina();
 	static void turnoMaquina(ContenedorM*, Partida*, maquina*);
 	static Partida* partidaJugadorMaquina();
+
+
 	static int elegirRepeticion(ListaPartida*);
 	static void verRepeticion(ListaPartida*);
+
+
 	//Empresa - Jugador
-	static int menuEmpresa();
+	static void menuEmpresa(empresaDots*);
 	static void suscribirJugador(empresaDots*);
 	static void codigoActual(empresaDots*);
 	static void jugadoresSuscritos(empresaDots*);
 	static void simulacionCambioDia(empresaDots*);
 
+	static void error();
 };

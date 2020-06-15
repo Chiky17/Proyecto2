@@ -5,6 +5,7 @@
 #include"EstraCentral.h"
 #include"EstraIslas.h"
 
+
 class maquina
 {
 private:
