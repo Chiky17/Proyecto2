@@ -16,6 +16,7 @@ public:
 	virtual ~ProcesaCompuesto();
 	void pasarInfoDeVecAMat();
 	ContenedorM* getMatriz();
+	ContenedorV* getVector();
 	void acomodo(int fil, int col);
 	//------------------------------------
 	void guardar(ostream& salida);

@@ -63,7 +63,7 @@ void vista::menuJuego(ListaPartida* partidas,empresaDots* empresa)
 				verRepeticion(partidas);
 			}break;
 			case 3: imprimeCadena("Volviendo"); break;
-		default: imprimeCadena("Opcion no valida");
+		default: imprimeCadena("Opcion no valida"); system("pause");
 		}
 	} while (opcion != 3);
 }
@@ -502,19 +502,24 @@ int vista::elegirRepeticion(ListaPartida* partidas)
 		system("cls");
 		imprimeCadena("Ordenado por partida mas reciente");
 		imprimeCadena(partidas->toString());
-		imprimeCadena("Digite el numero de la partida: "); opcion = leerEntero();
+		imprimSinEndl("\nDigite el numero de la partida: (En caso de querer terminar la partida ingrese el numero 911 en opcion...)\nOpcion: "); opcion = leerEntero();
+		if (opcion == 911)
+			return 0;
 	}
 	return opcion;
 }
 void vista::verRepeticion(ListaPartida* partidas)
 {
 	int pos = elegirRepeticion(partidas);
+	if (pos == 0)
+		return;
 	Jugada* jugadita;
-	ContenedorM* matriz = new ContenedorM;
+	ContenedorM* matriz; //= new ContenedorM;
 	string nombre;
 	int j = partidas->obtPartida(pos)->getJugadas()->cuentaNodos();
-	matriz = partidas->obtPartida(pos)->getProCompu()->getMatriz();
-
+	ContenedorV* vector = partidas->obtPartida(pos)->getProCompu()->getVector();
+	ProcesaCompuesto* proce = new ProcesaCompuesto(vector);
+	matriz = proce->getMatriz();
 	for (int k = 1; k <= j; k++)
 	{
 		system("cls");
@@ -536,11 +541,12 @@ void vista::menuEmpresa(empresaDots* empresa)
 	do
 	{
 		system("cls");
+		imprimeCadena("-> Menu de la empresa:");
 		imprimeCadena("[1] Suscribir Jugador");
 		imprimeCadena("[2] Codigo actual");
 		imprimeCadena("[3] Jugadores suscritos");
 		imprimeCadena("[4] Simular cambio de dia");
-		imprimeCadena("[5] Salir");
+		imprimeCadena("[5] Volver");
 		imprimSinEndl("Opcion: ");
 		opcion = leerEntero();
 		system("cls");
@@ -556,7 +562,7 @@ void vista::menuEmpresa(empresaDots* empresa)
 				simulacionCambioDia(empresa); break;
 			case 5: imprimeCadena("Volviendo"); break;
 
-		default: imprimeCadena("Opcion no valida");
+			default: imprimeCadena("Opcion no valida"); system("pause");
 		}
 	} while (opcion != 5);
 }
@@ -571,7 +577,7 @@ void vista::suscribirJugador(empresaDots* empresa)
 		jugador* jugaAux = new jugador(nom, id, empresa);
 		system("cls");
 		imprimeCadena("\tJugador suscrito correctamente\n\n");
-		return;
+		//return;
 	}
 	else
 	{
@@ -612,4 +618,5 @@ void vista::simulacionCambioDia(empresaDots* empresa)
 void vista::error()
 {
 	imprimeCadena("Opcion no valida");
+	//system("pause");
 }
