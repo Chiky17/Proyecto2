@@ -152,12 +152,15 @@ ListaPartida* ListaPartida::recuperarPartidas()
 	string _can;
 	ListaPartida* lista = new ListaPartida();
 
-	getline(entrada, _can, '\n');
-	int can = stoi(_can);
-
-	for (int i = 1; i <= can; i++)
+	if (entrada.good())
 	{
-		lista->insertarFinal(Partida::recuperar(entrada));
+		getline(entrada, _can, '\n');
+		int can = stoi(_can);
+
+		for (int i = 1; i <= can; i++)
+		{
+			lista->insertarFinal(Partida::recuperar(entrada));
+		}
 	}
 	return lista;
 
