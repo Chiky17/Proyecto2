@@ -4,6 +4,7 @@ Partida::Partida(ListaJugada* j, ProcesaCompuesto* c):jugadas(j),proCompu(c){}
 
 Partida::~Partida(){
 	delete proCompu;
+	delete jugadas;
 }
 ListaJugada* Partida::getJugadas(){
 	return jugadas;
