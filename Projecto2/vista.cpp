@@ -507,7 +507,7 @@ void vista::verRepeticion(ListaPartida* partidas)
 {
 	int pos = elegirRepeticion(partidas);
 	Jugada* jugadita;
-	ContenedorM* matriz;
+	ContenedorM* matriz = new ContenedorM;
 	string nombre;
 	int j = partidas->obtPartida(pos)->getJugadas()->cuentaNodos();
 	matriz = partidas->obtPartida(pos)->getProCompu()->getMatriz();
@@ -525,6 +525,7 @@ void vista::verRepeticion(ListaPartida* partidas)
 		imprimeCadena(matriz->toString(jugadita->getNombre()));
 		system("pause");
 	}
+	//delete matriz;
 }
 void vista::menuEmpresa(empresaDots* empresa)
 {
