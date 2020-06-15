@@ -497,6 +497,7 @@ int vista::elegirRepeticion(ListaPartida* partidas)
 	while (opcion < 1 || opcion > numPartidas)
 	{
 		system("cls");
+		imprimeCadena("Ordenado por partida mas reciente");
 		imprimeCadena(partidas->toString());
 		imprimeCadena("Digite el numero de la partida: "); opcion = leerEntero();
 	}
